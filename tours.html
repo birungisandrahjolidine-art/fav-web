@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Tours | Queen Elizabeth Tourism Centre</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+
+      header {
+        background: #0a5c36;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .hero {
+        background: url("images/tour-banner.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-shadow: 2px 2px 5px black;
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      .container {
+        width: 90%;
+        margin: 40px auto;
+      }
+
+      .title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #0a5c36;
+      }
+
+      .tour-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+      }
+
+      .tour-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: 0.4s;
+      }
+
+      .tour-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .tour-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .tour-info {
+        padding: 20px;
+      }
+
+      .tour-info h3 {
+        color: #0a5c36;
+        margin-bottom: 10px;
+      }
+
+      .tour-info p {
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .btn {
+        display: inline-block;
+        margin-top: 15px;
+        background: #ff9800;
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+
+      .btn:hover {
+        background: #e68900;
+      }
+
+      footer {
+        background: #0a5c36;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <header>
+      <h1>Queen Elizabeth Tourism Centre</h1>
+    </header> -->
+    <section class="hero">
+      <h1>Our Tours</h1>
+    </section>
+    <div class="container">
+      <h2 class="title">Explore Our Amazing Adventures</h2>
+
+      <div class="tour-container">
+        <!-- Game Drive -->
+        <div class="tour-card">
+          <img src="images/park.jpeg" alt="Game Drive" />
+          <div class="tour-info">
+            <h3>Game Drives</h3>
+            <p>
+              Experience exciting wildlife safaris and encounter lions,
+              elephants, buffaloes, antelopes and many more species in Queen
+              Elizabeth National Park.
+            </p>
+            <a href="#" class="btn">Book Tour</a>
+          </div>
+        </div>
+
+        <!-- Boat Cruise -->
+        <div class="tour-card">
+          <img src="images/cruize.jpeg" alt="Boat Cruise" />
+          <div class="tour-info">
+            <h3>Boat Cruises</h3>
+            <p>
+              Enjoy unforgettable cruises on the Kazinga Channel and witness
+              hippos, crocodiles, elephants and numerous bird species.
+            </p>
+            <a href="#" class="btn">Book Tour</a>
+          </div>
+        </div>
+
+        <!-- Bird Watching -->
+        <div class="tour-card">
+          <img src="images/birds.jpeg" alt="Bird Watching" />
+          <div class="tour-info">
+            <h3>Bird Watching</h3>
+            <p>
+              Discover over 600 bird species with expert guides and enjoy one of
+              Africa's finest birding destinations.
+            </p>
+            <a href="#" class="btn">Book Tour</a>
+          </div>
+        </div>
+
+        <!-- Nature Walks -->
+        <div class="tour-card">
+          <img src="images/treec.jpeg" alt="Tree Climbing Lions" />
+
+          <div class="tour-info">
+            <h3>Tree Climbing Lions</h3>
+
+            <p>
+              Discover the rare and fascinating lions that climb trees in
+              <strong>Queen Elizabeth National Park</strong>. This unique
+              behavior is commonly seen in the Ishasha sector, where lions rest
+              on fig trees to escape heat and insects while watching for prey
+              below.
+            </p>
+
+            <a href="#" class="btn">Book Tour</a>
+          </div>
+        </div>
+
+        <!-- Chimpanzee Tracking -->
+        <div class="tour-card">
+          <img src="images/chimp.jpeg" alt="Chimpanzee Tracking" />
+          <div class="tour-info">
+            <h3>Chimpanzee Tracking</h3>
+            <p>
+              Meet our closest relatives in the Kyambura Gorge and enjoy an
+              unforgettable primate adventure.
+            </p>
+            <a href="#" class="btn">Book Tour</a>
+          </div>
+        </div>
+
+        <!-- Cultural Tours -->
+        <div class="tour-card">
+          <img src="images/ba.jpeg" alt="Cultural Tour" />
+          <div class="tour-info">
+            <h3>Cultural Tours</h3>
+            <p>
+              Discover the traditions, dances and lifestyle of local communities
+              surrounding Queen Elizabeth National Park.
+            </p>
+            <a href="#" class="btn">Book Tour</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Queen Elizabeth Tourism Centre. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Queen Elizabeth Tourism Centre</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f8f8f8;
+        color: #333;
+      }
+
+      /* Header */
+      header {
+        background: #1b4332;
+        color: white;
+        padding: 15px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      nav ul li a:hover {
+        color: #d4af37;
+      }
+
+      /* Hero Section */
+      .hero {
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("images/Queen Elizabeth tourism logo.png") no-repeat center center;
+        background-size: cover;
+        background-position: center;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: white;
+      }
+
+      .hero-content h1 {
+        font-size: 60px;
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 22px;
+        margin-bottom: 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        background: #d4af37;
+        color: white;
+        padding: 15px 30px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 18px;
+      }
+
+      .btn:hover {
+        background: #b38f22;
+      }
+
+      /* Featured Tours */
+      .tours {
+        padding: 80px 8%;
+        text-align: center;
+      }
+
+      .tours h2 {
+        color: #1b4332;
+        margin-bottom: 40px;
+        font-size: 40px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .card-content {
+        padding: 20px;
+      }
+
+      .card-content h3 {
+        color: #1b4332;
+        margin-bottom: 10px;
+      }
+
+      /* About */
+      .about {
+        background: #fff;
+        padding: 80px 8%;
+        text-align: center;
+      }
+
+      .about h2 {
+        color: #1b4332;
+        margin-bottom: 20px;
+        font-size: 40px;
+      }
+
+      .about p {
+        max-width: 800px;
+        margin: auto;
+        line-height: 1.8;
+        font-size: 18px;
+      }
+
+      /* Footer */
+      footer {
+        background: #1b4332;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      /* Dropdown Menu */
+      nav ul li {
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        min-width: 220px;
+        list-style: none;
+        padding: 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      .dropdown-content li {
+        margin: 0;
+      }
+
+      .dropdown-content li a {
+        color: #333;
+        padding: 12px 15px;
+        display: block;
+        text-decoration: none;
+      }
+
+      .dropdown-content li a:hover {
+        background: #f0f0f0;
+        color: #1b4332;
+      }
+
+      /* Show dropdown on hover */
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="logo">Queen Elizabeth Tourism Centre</div>
+
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li class="dropdown">
+            <a href="#">Services </a>
+            <ul class="dropdown-content">
+              <li><a href="#">Game Drives</a></li>
+              <li><a href="#">LuxuryBoat Cruises</a></li>
+              <li><a href="#">Bird Watching</a></li>
+              <li><a href="#">Nature Walks</a></li>
+              <li><a href="#">Chimpanzee Tracking</a></li>
+              <li><a href="#">Cultural Tours</a></li>
+              <li><a href="#">Accommodation Booking</a></li>
+                <li><a href="#">Spot Fishing Services</a></li>
+              <li><a href="#">Car and Motorcycle Rentals</a></li>
+            </ul>
+          </li>
+          <!-- <li><a href="#">About</a></li> -->
+          <li><a href="#">Tours</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Contact</a></li>
+          <!-- <li><a href="#">Book Now</a></li>  -->
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Explore the Wild, Create Lasting Memories</h1>
+        <p>
+          Discover unforgettable safari adventures in Queen Elizabeth National
+          Park.
+        </p>
+
+        <a href="#" class="btn">Book Your Safari</a>
+      </div>
+    </section>
+
+    <!-- Featured Tours -->
+    <section class="tours">
+      <h2>Featured Tours</h2>
+
+      <div class="cards">
+        <div class="card">
+          <img src="images/lions.jpeg" alt="Lions" />
+          <div class="card-content">
+            <h3>Game Drives</h3>
+            <p>Encounter lions, elephants, buffaloes, and other wildlife.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/boat cruise.jpeg" alt="Boat Cruise" />
+          <div class="card-content">
+            <h3>Kazinga Channel Cruise</h3>
+            <p>Enjoy spectacular views and abundant aquatic wildlife.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="images/chimp.jpeg" alt="Chimpanzee Tracking" />
+          <div class="card-content">
+            <h3>Chimpanzee Tracking</h3>
+            <p>Experience an exciting adventure in Kyambura Gorge.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+      <h2>About Us</h2>
+
+      <p>
+        Queen Elizabeth Tourism Centre is dedicated to providing authentic,
+        memorable, and eco-friendly safari experiences in Queen Elizabeth
+        National Park. Our professional guides and personalized tours allow
+        visitors to explore Uganda's breathtaking wildlife and landscapes while
+        promoting conservation and sustainable tourism.
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        © 2026 Queen Elizabeth Tourism Centre | Explore • Discover • Remember
+      </p>
+    </footer>
+  </body>
+</html>
