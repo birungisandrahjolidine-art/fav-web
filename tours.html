@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Tours | Queen Elizabeth Tourism Centre</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 
     <style>
       * {
@@ -11,33 +12,45 @@
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
         font-family: Arial, sans-serif;
         background-color: #f5f5f5;
       }
 
       header {
-        background: #0a5c36;
+        background: #1b4332;
         color: white;
-        text-align: center;
-        padding: 20px;
+        padding: 15px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
-      .hero {
-        background: url("images/tour-banner.jpg");
-        background-size: cover;
-        background-position: center;
-        height: 300px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-shadow: 2px 2px 5px black;
-        font-size: 40px;
+      .logo {
+        font-size: 28px;
         font-weight: bold;
       }
 
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 25px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      nav ul li a:hover {
+        color: #d4af37;
+      }
+
+  
       .container {
         width: 90%;
         margin: 40px auto;
@@ -101,22 +114,191 @@
         background: #e68900;
       }
 
-      footer {
-        background: #0a5c36;
+      header {
+        background: #1b4332;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 8%;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
         color: white;
+      }
+
+      .logo img {
+        width: 70px;
+        height: auto;
+      }
+
+      .logo h2 {
+        font-size: 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      nav ul li {
+        position: relative;
+        margin-left: 20px;
+      }
+
+      nav ul li a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        padding: 15px 20px;
+        font-size: 18px;
+      }
+
+      nav ul li a:hover {
+        color: #d4af37;
+      }
+
+      .dropdown > a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .dropdown > a::after {
+        content: "▾";
+        font-size: 0.85em;
+        transition: transform 0.3s ease;
+      }
+
+      .dropdown:hover > a::after {
+        transform: rotate(180deg);
+      }
+
+      /* Dropdown */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        min-width: 220px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+      }
+
+.dropdown-content li {
+    width: 100%;
+}
+
+.dropdown-content li a {
+    color: black;
+    padding: 12px 15px;
+}
+
+.dropdown-content li a:hover {
+    background: #f2f2f2;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+      footer {
+        background: #0f3f25;
+        color: white;
+        padding: 60px 80px 30px 80px;
+      }
+
+      .footer-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 40px;
+      }
+
+      .footer-container h3 {
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .footer-container p {
+        margin: 10px 0;
+        color: #bbb;
+        font-size: 15px;
+      }
+
+      .socials {
+        margin-top: 20px;
+      }
+
+      .socials i {
+        font-size: 24px;
+        margin-right: 15px;
+        cursor: pointer;
+        color: #bbb;
+        transition: color 0.3s ease;
+      }
+
+      .socials i:hover {
+        color: #d4af37;
+      }
+
+      .copyright {
         text-align: center;
-        padding: 20px;
-        margin-top: 50px;
+        margin-top: 30px;
+        color: #888;
+        font-size: 14px;
       }
     </style>
   </head>
   <body>
-    <!-- <header>
-      <h1>Queen Elizabeth Tourism Centre</h1>
-    </header> -->
-    <section class="hero">
-      <h1>Our Tours</h1>
-    </section>
+    <header>
+      <div class="logo">QUEEN TRAILS SAFARIS</div>
+
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="tours.html">Tours</a></li>
+          <li class="dropdown">
+            <a href="#">Services</a>
+            <ul class="dropdown-content">
+              <li><a href="#">Game Drives</a></li>
+              <li><a href="#">LuxuryBoat Cruises</a></li>
+              <li><a href="#">Bird Watching</a></li>
+              <li><a href="#">Nature Walks</a></li>
+              <li><a href="#">Chimpanzee Tracking</a></li>
+              <li><a href="#">Cultural Tours</a></li>
+              <li><a href="#">Accommodation Booking</a></li>
+              <li><a href="#">Spot Fishing Services</a></li>
+              <li><a href="#">Car and Motorcycle Rentals</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#">Destinations</a>
+            <ul class="dropdown-content">
+              <li><a href="#">Queen Elizabeth National Park</a></li>
+              <li><a href="#">Kibale Forest</a></li>
+              <li><a href="#">Bwindi Impenetrable Forest</a></li>
+              <li><a href="#">Murchison Falls</a></li>
+              <li><a href="#">Lake Mburo</a></li>
+              <li><a href="#">Mgahinga Gorilla Park</a></li>
+            </ul>
+          </li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
     <div class="container">
       <h2 class="title">Explore Our Amazing Adventures</h2>
 
@@ -144,7 +326,7 @@
               Enjoy unforgettable cruises on the Kazinga Channel and witness
               hippos, crocodiles, elephants and numerous bird species.
             </p>
-            <a href="#" class="btn">Book Tour</a>
+            <a href="contact.html" class="btn">Book Tour</a>
           </div>
         </div>
 
@@ -157,7 +339,7 @@
               Discover over 600 bird species with expert guides and enjoy one of
               Africa's finest birding destinations.
             </p>
-            <a href="#" class="btn">Book Tour</a>
+            <a href="contact.html" class="btn">Book Tour</a>
           </div>
         </div>
 
@@ -176,7 +358,7 @@
               below.
             </p>
 
-            <a href="#" class="btn">Book Tour</a>
+            <a href="contact.html" class="btn">Book Tour</a>
           </div>
         </div>
 
@@ -202,14 +384,46 @@
               Discover the traditions, dances and lifestyle of local communities
               surrounding Queen Elizabeth National Park.
             </p>
-            <a href="#" class="btn">Book Tour</a>
+            <a href="contact.html" class="btn">Book Tour</a>
           </div>
         </div>
       </div>
     </div>
 
     <footer>
-      <p>&copy; 2026 Queen Elizabeth Tourism Centre. All Rights Reserved.</p>
+      <div class="footer-container">
+        <div>
+          <h3>Queen Trails Safaris</h3>
+          <p>Every Trail creates unforgettable memories.</p>
+        </div>
+
+        <div>
+          <h3>Quick Links</h3>
+          <p>Home</p>
+          <p>Tours</p>
+          <p>Services</p>
+          <p>Contact</p>
+        </div>
+
+        <div>
+          <h3>Our Services</h3>
+          <p>Game Drives</p>
+          <p>Boat Cruises</p>
+          <p>Bird Watching</p>
+          <p>Chimp trekking</p>
+          <p>Accommodation</p>
+        </div>
+
+        <div>
+          <h3>Connect With Us</h3>
+          <div class="socials">
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-whatsapp"></i>
+          </div>
+        </div>
+      </div>
+      <p class="copyright">© 2026 Queen trails safaris. All rights reserved.</p>
     </footer>
   </body>
 </html>
