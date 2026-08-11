@@ -493,3 +493,411 @@ document.addEventListener(
 
     }
 );
+// ==================================================
+// LOAD ADMIN REVIEWS
+// ==================================================
+
+async function loadAdminReviews() {
+
+    const tableBody =
+        document.getElementById("reviewsTableBody");
+
+    try {
+
+        const response =
+            await fetch("/api/admin/reviews");
+
+        const data =
+            await response.json();
+
+        if (!data.success) {
+
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="6">
+                        Failed to load reviews.
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
+        const reviews = data.reviews;
+
+
+        // Update statistics
+
+        document.getElementById(
+            "totalReviews"
+        ).textContent = reviews.length;
+
+
+        document.getElementById(
+            "pendingReviews"
+        ).textContent =
+            reviews.filter(
+                review => review.status === "Pending"
+            ).length;
+
+
+        document.getElementById(
+            "approvedReviews"
+        ).textContent =
+            reviews.filter(
+                review => review.status === "Approved"
+            ).length;
+
+
+        document.getElementById(
+            "rejectedReviews"
+        ).textContent =
+            reviews.filter(
+                review => review.status === "Rejected"
+            ).length;
+
+
+        // No reviews
+
+        if (reviews.length === 0) {
+
+            tableBody.innerHTML = `
+                <tr>
+                    <td
+                        colspan="6"
+                        style="text-align:center;"
+                    >
+                        No reviews found.
+                    </td>
+                </tr>
+            `;
+
+            return;
+        }
+
+
+        // Display reviews
+
+        tableBody.innerHTML =
+            reviews.map(review => {
+
+                const stars =
+                    "★".repeat(review.rating) +
+                    "☆".repeat(5 - review.rating);
+
+
+                return `
+                    <tr>
+
+                        <td>
+                            <strong>
+                                ${escapeHTML(
+                                    review.clientName
+                                )}
+                            </strong>
+
+                            <br>
+
+                            <small>
+                                ${escapeHTML(
+                                    review.email
+                                )}
+                            </small>
+                        </td>
+
+
+                        <td>
+                            ${escapeHTML(
+                                review.destination
+                            )}
+                        </td>
+
+
+                        <td>
+                            <span class="review-stars">
+                                ${stars}
+                            </span>
+                        </td>
+
+
+                        <td>
+                            <div class="review-message">
+                                ${escapeHTML(
+                                    review.reviewMessage
+                                )}
+                            </div>
+                        </td>
+
+
+                        <td>
+
+                            <span class="
+                                review-status
+                                ${review.status.toLowerCase()}
+                            ">
+                                ${review.status}
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <div class="review-actions">
+
+                                ${
+                                    review.status !==
+                                    "Approved"
+                                    ? `
+                                        <button
+                                            class="approve-review-btn"
+                                            onclick="updateReviewStatus(
+                                                '${review._id}',
+                                                'Approved'
+                                            )"
+                                        >
+                                            Approve
+                                        </button>
+                                    `
+                                    : ""
+                                }
+
+
+                                ${
+                                    review.status !==
+                                    "Rejected"
+                                    ? `
+                                        <button
+                                            class="reject-review-btn"
+                                            onclick="updateReviewStatus(
+                                                '${review._id}',
+                                                'Rejected'
+                                            )"
+                                        >
+                                            Reject
+                                        </button>
+                                    `
+                                    : ""
+                                }
+
+
+                                <button
+                                    class="delete-review-btn"
+                                    onclick="deleteReview(
+                                        '${review._id}'
+                                    )"
+                                >
+                                    Delete
+                                </button>
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+                `;
+
+            }).join("");
+
+
+    } catch (error) {
+
+        console.error(
+            "ERROR LOADING REVIEWS:",
+            error
+        );
+
+
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="6">
+                    Error loading reviews.
+                </td>
+            </tr>
+        `;
+
+    }
+
+}
+
+
+// ==================================================
+// UPDATE REVIEW STATUS
+// ==================================================
+
+async function updateReviewStatus(
+    reviewId,
+    status
+) {
+
+    try {
+
+        const response =
+            await fetch(
+                `/api/admin/reviews/${reviewId}/status`,
+                {
+
+                    method: "PUT",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            status: status
+                        })
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!data.success) {
+
+            alert(data.message);
+
+            return;
+        }
+
+
+        alert(data.message);
+
+
+        // Reload reviews
+
+        loadAdminReviews();
+
+
+    } catch (error) {
+
+        console.error(
+            "REVIEW STATUS ERROR:",
+            error
+        );
+
+        alert(
+            "Failed to update review."
+        );
+
+    }
+
+}
+
+
+// ==================================================
+// DELETE REVIEW
+// ==================================================
+
+async function deleteReview(
+    reviewId
+) {
+
+    const confirmed =
+        confirm(
+            "Are you sure you want to delete this review?"
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                `/api/admin/reviews/${reviewId}`,
+                {
+
+                    method: "DELETE"
+
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!data.success) {
+
+            alert(data.message);
+
+            return;
+        }
+
+
+        alert(
+            "Review deleted successfully!"
+        );
+
+
+        loadAdminReviews();
+
+
+    } catch (error) {
+
+        console.error(
+            "DELETE REVIEW ERROR:",
+            error
+        );
+
+        alert(
+            "Failed to delete review."
+        );
+
+    }
+
+}
+
+
+// ==================================================
+// SECURITY HELPER
+// ==================================================
+
+function escapeHTML(value) {
+
+    if (value === null ||
+        value === undefined) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(/&/g, "&amp;")
+
+        .replace(/</g, "&lt;")
+
+        .replace(/>/g, "&gt;")
+
+        .replace(/"/g, "&quot;")
+
+        .replace(/'/g, "&#039;");
+
+}
+
+
+// ==================================================
+// LOAD REVIEWS WHEN DASHBOARD OPENS
+// ==================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadAdminReviews();
+
+    }
+);

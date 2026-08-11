@@ -114,6 +114,7 @@ nav ul li a.active {
   padding: 10px 18px;
 
   font-size: 13px;
+  color: white;
 }
 
 .dropdown-content li a:hover {

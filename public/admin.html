@@ -150,6 +150,85 @@
             Refresh
           </button>
         </div>
+        <!-- ==========================================
+     REVIEWS SECTION
+========================================== -->
+
+        <section class="admin-section" id="reviewsSection">
+          <div class="section-header">
+            <div>
+              <h2>Client Reviews</h2>
+
+              <p>Manage ratings and experiences shared by clients.</p>
+            </div>
+
+            <button
+              type="button"
+              onclick="loadAdminReviews()"
+              class="refresh-btn"
+            >
+              Refresh Reviews
+            </button>
+          </div>
+
+          <!-- REVIEW STATISTICS -->
+
+          <div class="review-stats">
+            <div class="review-stat-card">
+              <h3 id="totalReviews">0</h3>
+
+              <p>Total Reviews</p>
+            </div>
+
+            <div class="review-stat-card">
+              <h3 id="pendingReviews">0</h3>
+
+              <p>Pending</p>
+            </div>
+
+            <div class="review-stat-card">
+              <h3 id="approvedReviews">0</h3>
+
+              <p>Approved</p>
+            </div>
+
+            <div class="review-stat-card">
+              <h3 id="rejectedReviews">0</h3>
+
+              <p>Rejected</p>
+            </div>
+          </div>
+
+          <!-- REVIEWS TABLE -->
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Client</th>
+
+                  <th>Destination</th>
+
+                  <th>Rating</th>
+
+                  <th>Experience</th>
+
+                  <th>Status</th>
+
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="reviewsTableBody">
+                <tr>
+                  <td colspan="6" style="text-align: center">
+                    Loading reviews...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
         <!-- SEARCH -->
 

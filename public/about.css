@@ -82,7 +82,7 @@ nav ul li {
     position: absolute;
     top: 100%;
     left: 0;
-    background: white;
+    background: #0f3f25;
     min-width: 220px;
     list-style: none;
     padding: 0;
@@ -91,7 +91,7 @@ nav ul li {
 }
 
 .dropdown-content li a {
-    color: #333;
+    color: white;
     padding: 12px 15px;
     display: block;
     text-decoration: none;
@@ -99,8 +99,8 @@ nav ul li {
 }
 
 .dropdown-content li a:hover {
-    background: #f0f0f0;
-    color: #1b4332;
+    background: #164f31;
+    color: #d4af37;
 }
 
 .dropdown:hover .dropdown-content {

@@ -187,7 +187,7 @@
         position: absolute;
         top: 100%;
         left: 0;
-        background: white;
+        background: #0f3f25;
         min-width: 220px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         z-index: 1000;
@@ -198,12 +198,13 @@
 }
 
 .dropdown-content li a {
-    color: black;
+    color: white;
     padding: 12px 15px;
 }
 
 .dropdown-content li a:hover {
-    background: #f2f2f2;
+    background: #164f31;
+    color: #d4af37;
 }
 
 /* Show dropdown on hover */
@@ -275,7 +276,7 @@
           <li><a href="aboutus.html">About Us</a></li>
           <li><a href="tours.html">Tours</a></li>
           <li class="dropdown">
-            <a href="#">Services</a>
+            <a href="#">Services <span class="nav-caret">▾</span></a>
             <ul class="dropdown-content">
               <li><a href="#">Game Drives</a></li>
               <li><a href="#">LuxuryBoat Cruises</a></li>
@@ -289,7 +290,7 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#">Destinations</a>
+            <a href="#">Destinations <span class="nav-caret">▾</span></a>
             <ul class="dropdown-content">
               <li><a href="#">Queen Elizabeth National Park</a></li>
               <li><a href="#">Kibale Forest</a></li>
