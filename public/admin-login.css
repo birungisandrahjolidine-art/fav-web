@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(15, 63, 37, 0.82),
+            rgba(15, 63, 37, 0.82)
+        ),
+        url("images/queen-elizabeth.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* =========================
+   LOGIN CONTAINER
+========================= */
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+}
+
+
+/* =========================
+   LOGIN CARD
+========================= */
+
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo img {
+    width: 85px;
+    height: 85px;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+
+    margin-bottom: 12px;
+}
+
+.logo h1 {
+    color: #0f3f25;
+    font-size: 22px;
+}
+
+.logo p {
+    color: #777;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.login-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.login-title h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+.login-title p {
+    color: #777;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+
+/* =========================
+   INPUT GROUP
+========================= */
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+
+    margin-bottom: 7px;
+
+    color: #444;
+}
+
+
+/* =========================
+   INPUT BOX
+========================= */
+
+.input-box {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    padding: 0 13px;
+
+    transition: 0.3s;
+}
+
+.input-box:focus-within {
+    border-color: #0f3f25;
+
+    box-shadow:
+        0 0 0 3px rgba(15, 63, 37, 0.08);
+}
+
+.input-box > i:first-child {
+    color: #0f3f25;
+    margin-right: 10px;
+}
+
+.input-box input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    padding: 13px 5px;
+
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.password-toggle {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+/* =========================
+   LOGIN OPTIONS
+========================= */
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 12px;
+
+    margin-bottom: 20px;
+}
+
+.login-options label {
+    color: #666;
+}
+
+.login-options input {
+    margin-right: 5px;
+}
+
+.login-options a {
+    color: #0f3f25;
+    text-decoration: none;
+}
+
+.login-options a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.login-message {
+    display: none;
+
+    padding: 10px;
+
+    border-radius: 7px;
+
+    margin-bottom: 15px;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   LOGIN BUTTON
+========================= */
+
+.login-btn {
+    width: 100%;
+
+    border: none;
+
+    background: #0f3f25;
+    color: white;
+
+    padding: 14px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #0b301c;
+}
+
+.login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   BACK HOME
+========================= */
+
+.back-home {
+    text-align: center;
+
+    margin-top: 25px;
+}
+
+.back-home a {
+    color: #0f3f25;
+
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+.back-home a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .login-card {
+        padding: 30px 22px;
+    }
+
+    .logo h1 {
+        font-size: 19px;
+    }
+
+    .login-title h2 {
+        font-size: 21px;
+    }
+
+}

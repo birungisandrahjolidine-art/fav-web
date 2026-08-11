@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Queen Trails Safaris - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="images/logo.png" alt="Queen Trails Safaris Logo" />
+
+        <h2>Queen Trails</h2>
+        <span>ADMIN</span>
+      </div>
+
+      <nav>
+        <a href="#" class="active">
+          <i class="fas fa-chart-line"></i>
+          Dashboard
+        </a>
+
+        <a href="#bookings">
+          <i class="fas fa-calendar-check"></i>
+          Bookings
+        </a>
+
+        <a href="#">
+          <i class="fas fa-map-marked-alt"></i>
+          Tours
+        </a>
+
+        <a href="#">
+          <i class="fas fa-users"></i>
+          Customers
+        </a>
+
+        <a href="#">
+          <i class="fas fa-chart-pie"></i>
+          Reports
+        </a>
+
+        <a href="#">
+          <i class="fas fa-cog"></i>
+          Settings
+        </a>
+      </nav>
+
+      <a href="home.html" class="logout">
+        <i class="fas fa-sign-out-alt"></i>
+        Logout
+      </a>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+      <!-- TOP BAR -->
+
+      <header class="topbar">
+        <div>
+          <h1>Admin Dashboard</h1>
+          <p>Manage Queen Trails Safaris bookings</p>
+        </div>
+
+        <div class="admin-profile">
+          <i class="fas fa-user-circle"></i>
+
+          <div>
+            <strong>Administrator</strong>
+            <small>Admin</small>
+          </div>
+        </div>
+      </header>
+
+      <!-- STATISTICS -->
+
+      <section class="statistics">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-calendar"></i>
+          </div>
+
+          <div>
+            <p>Total Bookings</p>
+            <h2 id="totalBookings">0</h2>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon pending">
+            <i class="fas fa-clock"></i>
+          </div>
+
+          <div>
+            <p>Pending</p>
+            <h2 id="pendingBookings">0</h2>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon confirmed">
+            <i class="fas fa-check-circle"></i>
+          </div>
+
+          <div>
+            <p>Confirmed</p>
+            <h2 id="confirmedBookings">0</h2>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon cancelled">
+            <i class="fas fa-times-circle"></i>
+          </div>
+
+          <div>
+            <p>Cancelled</p>
+            <h2 id="cancelledBookings">0</h2>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOOKINGS -->
+
+      <section class="bookings-section" id="bookings">
+        <div class="section-header">
+          <div>
+            <h2>Recent Bookings</h2>
+            <p>Manage tourist booking requests</p>
+          </div>
+
+          <button onclick="loadBookings()" class="refresh-btn">
+            <i class="fas fa-sync"></i>
+            Refresh
+          </button>
+        </div>
+
+        <!-- SEARCH -->
+
+        <div class="search-area">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by tourist name or email..."
+          />
+
+          <select id="statusFilter">
+            <option value="All">All Statuses</option>
+            <option value="Pending">Pending</option>
+            <option value="Confirmed">Confirmed</option>
+            <option value="Rejected">Rejected</option>
+            <option value="Completed">Completed</option>
+            <option value="Cancelled">Cancelled</option>
+          </select>
+        </div>
+
+        <!-- TABLE -->
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Tourist</th>
+                <th>Contact</th>
+                <th>Destination</th>
+                <th>Travel Date</th>
+                <th>Travelers</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody id="bookingTable">
+              <tr>
+                <td colspan="7">Loading bookings...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

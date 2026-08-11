@@ -1,0 +1,603 @@
+
+/* ================= GENERAL ================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #333;
+  background: #f8f6f0;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+/* ================= NAVBAR ================= */
+
+header {
+  width: 100%;
+  min-height: 80px;
+  background: #0f3f25;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 6%;
+  position: relative;
+  z-index: 1000;
+}
+
+
+/* LOGO */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.logo h2 {
+  color: #d4af37;
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+
+/* NAVIGATION */
+
+nav ul {
+  list-style: none;
+
+  display: flex;
+  align-items: center;
+
+  gap: 28px;
+}
+
+nav ul li {
+  position: relative;
+}
+
+nav ul li a {
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+
+  transition: 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #d4af37;
+}
+
+
+/* ================= DROPDOWN ================= */
+
+.dropdown-content {
+  display: none;
+
+  position: absolute;
+  top: 100%;
+  left: 0;
+
+  width: 240px;
+
+  background: #0f3f25;
+
+  padding: 10px 0;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+.dropdown-content li {
+  width: 100%;
+}
+
+.dropdown-content li a {
+  display: block;
+
+  padding: 10px 18px;
+
+  font-size: 13px;
+}
+
+.dropdown-content li a:hover {
+  background: #164f31;
+  color: #d4af37;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+/* ================= HERO ================= */
+
+.hero {
+  height: 390px;
+
+  background-image:
+    url("images/cruize.jpeg");
+
+  background-size: cover;
+  background-position: center;
+
+  position: relative;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.48);
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: white;
+}
+
+.overlay h1 {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.overlay p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-top: 15px;
+}
+
+.line {
+  width: 70px;
+  height: 3px;
+
+  background: #d4af37;
+
+  margin: 15px 0;
+}
+
+
+/* ================= CONTACT SECTION ================= */
+
+.contact-section {
+  padding: 80px 6%;
+}
+
+.contact-wrapper {
+  max-width: 1200px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: 0.9fr 1.3fr;
+
+  gap: 35px;
+
+  align-items: stretch;
+}
+
+
+/* ================= CARDS ================= */
+
+.contact-card,
+.booking-card {
+  background: white;
+
+  padding: 40px;
+
+  border-radius: 8px;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.contact-card h2,
+.booking-card h2 {
+  color: #0f3f25;
+
+  font-size: 28px;
+
+  font-weight: 600;
+}
+
+.gold-line {
+  width: 55px;
+  height: 3px;
+
+  background: #d4af37;
+
+  margin: 12px 0 25px;
+}
+
+
+/* ================= CONTACT INFORMATION ================= */
+
+.intro,
+.booking-intro {
+  color: #666;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  margin-bottom: 30px;
+}
+
+.item {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 18px;
+
+  margin-bottom: 25px;
+}
+
+.item > i {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #0f3f25;
+
+  color: #d4af37;
+
+  border-radius: 50%;
+
+  flex-shrink: 0;
+}
+
+.item h3 {
+  color: #0f3f25;
+
+  font-size: 16px;
+
+  margin-bottom: 5px;
+}
+
+.item p {
+  color: #666;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+/* ================= CONTACT SOCIALS ================= */
+
+.contact-socials {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+.contact-socials a {
+  width: 40px;
+  height: 40px;
+
+  background: #0f3f25;
+
+  color: white;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s;
+}
+
+.contact-socials a:hover {
+  background: #d4af37;
+
+  color: #0f3f25;
+
+  transform: translateY(-3px);
+}
+
+
+/* ================= BOOKING FORM ================= */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+
+  color: #0f3f25;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 5px;
+
+  background: #fafafa;
+
+  color: #333;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 13px;
+
+  outline: none;
+
+  transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #d4af37;
+
+  background: white;
+
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+
+  min-height: 110px;
+}
+
+
+/* ================= FORM ROW ================= */
+
+.form-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 18px;
+}
+
+
+/* ================= BOOKING BUTTON ================= */
+
+.booking-btn {
+  width: 100%;
+
+  border: none;
+
+  padding: 14px 20px;
+
+  border-radius: 5px;
+
+  background: #0f3f25;
+
+  color: white;
+
+  font-family: "Poppins", sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.booking-btn i {
+  margin-left: 8px;
+}
+
+.booking-btn:hover {
+  background: #d4af37;
+
+  color: #0f3f25;
+
+  transform: translateY(-2px);
+}
+
+
+/* ================= FOOTER ================= */
+
+footer {
+  background: #0f3f25;
+
+  color: white;
+
+  padding: 50px 6% 20px;
+}
+
+.footer-container {
+  max-width: 1200px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: 2fr 1fr 1fr;
+
+  gap: 50px;
+}
+
+.footer-container h3 {
+  color: #d4af37;
+
+  font-size: 18px;
+
+  margin-bottom: 15px;
+}
+
+.footer-container p {
+  color: #ddd;
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+.footer-container p a {
+  color: #ddd;
+
+  transition: 0.3s;
+}
+
+.footer-container p a:hover {
+  color: #d4af37;
+}
+
+
+/* ================= FOOTER SOCIALS ================= */
+
+.socials {
+  display: flex;
+
+  gap: 15px;
+}
+
+.socials a {
+  color: white;
+
+  font-size: 20px;
+
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: #d4af37;
+}
+
+
+/* ================= COPYRIGHT ================= */
+
+.copyright {
+  text-align: center;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+  margin-top: 40px;
+
+  padding-top: 20px;
+
+  font-size: 12px;
+
+  color: #bbb;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 950px) {
+
+  header {
+    flex-direction: column;
+
+    padding: 20px;
+  }
+
+  nav {
+    margin-top: 15px;
+  }
+
+  nav ul {
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .logo h2 {
+    font-size: 15px;
+  }
+
+  nav ul {
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .hero {
+    height: 320px;
+  }
+
+  .overlay h1 {
+    font-size: 38px;
+  }
+
+  .contact-section {
+    padding: 50px 5%;
+  }
+
+  .contact-card,
+  .booking-card {
+    padding: 25px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+  }
+
+  .dropdown-content {
+    position: static;
+
+    width: 100%;
+  }
+}
+

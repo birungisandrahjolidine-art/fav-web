@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login - Queen Trails Safaris</title>
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="admin-login.css">
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <!-- LOGO -->
+
+            <div class="logo">
+                <img
+                    src="images/logo.png"
+                    alt="Queen Trails Safaris Logo"
+                >
+
+                <h1>Queen Trails Safaris</h1>
+
+                <p>Administration Portal</p>
+            </div>
+
+
+            <!-- LOGIN TITLE -->
+
+            <div class="login-title">
+
+                <h2>Welcome Back</h2>
+
+                <p>
+                    Login to manage your bookings
+                </p>
+
+            </div>
+
+
+            <!-- LOGIN FORM -->
+
+            <form id="adminLoginForm">
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fas fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter admin email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-box">
+
+                        <i class="fas fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <i
+                            class="fas fa-eye password-toggle"
+                            id="togglePassword"
+                        ></i>
+
+                    </div>
+
+                </div>
+
+
+                <!-- REMEMBER ME -->
+
+                <div class="login-options">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
+                        Remember me
+
+                    </label>
+
+                    <a href="#">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+                <!-- ERROR / SUCCESS MESSAGE -->
+
+                <div
+                    id="loginMessage"
+                    class="login-message"
+                ></div>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+
+                    <i class="fas fa-sign-in-alt"></i>
+
+                    Login to Dashboard
+
+                </button>
+
+            </form>
+
+
+            <!-- BACK TO WEBSITE -->
+
+            <div class="back-home">
+
+                <a href="home.html">
+
+                    <i class="fas fa-arrow-left"></i>
+
+                    Back to Website
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="admin-login.js"></script>
+
+</body>
+
+</html>
