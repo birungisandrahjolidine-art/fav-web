@@ -1,16 +1,34 @@
+require("dotenv").config();
+
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
+const nodemailer = require("nodemailer");
 
 const Booking = require("./models/Booking");
 const Admin = require("./models/Admin");
 const Review = require("./models/Review");
 
 const app = express();
-const PORT = 5000;
 
+const PORT = process.env.PORT || 5000;
+
+const MONGO_URI =
+  process.env.MONGO_URI || "mongodb://127.0.0.1:27017/queen_trails_safaris";
+
+// ==================================================
+// EMAIL TRANSPORTER
+// ==================================================
+
+const emailTransporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+});
 
 // ==================================================
 // MIDDLEWARE
@@ -19,783 +37,780 @@ const PORT = 5000;
 app.use(express.json());
 
 app.use(
-    express.urlencoded({
-        extended: true
-    })
+  express.urlencoded({
+    extended: true,
+  }),
 );
-
 
 // ==================================================
 // SESSION
 // ==================================================
 
 app.use(
-    session({
-        secret: "queen-trails-secret-key",
+  session({
+    secret: process.env.SESSION_SECRET || "queen-trails-secret-key",
 
-        resave: false,
+    resave: false,
 
-        saveUninitialized: false,
+    saveUninitialized: false,
 
-        cookie: {
-            httpOnly: true,
-            maxAge: 1000 * 60 * 60
-        }
-    })
+    cookie: {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60,
+    },
+  }),
 );
-
 
 // ==================================================
 // HOME PAGE
 // ==================================================
 
 app.get("/", (req, res) => {
-
-    res.sendFile(
-        path.join(
-            __dirname,
-            "public",
-            "home.html"
-        )
-    );
-
+  res.sendFile(path.join(__dirname, "public", "home.html"));
 });
-
 
 // ==================================================
 // ADMIN LOGIN
 // ==================================================
 
 app.post("/api/admin/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
-    try {
+    console.log("---------------------------------");
+    console.log("ADMIN LOGIN ATTEMPT");
+    console.log("Email:", email);
+    console.log("---------------------------------");
 
-        const { email, password } = req.body;
-
-
-        console.log("---------------------------------");
-        console.log("ADMIN LOGIN ATTEMPT");
-        console.log("Email:", email);
-        console.log("---------------------------------");
-
-
-        // Check required fields
-
-        if (!email || !password) {
-
-            return res.status(400).json({
-
-                success: false,
-
-                message:
-                    "Email and password are required."
-
-            });
-
-        }
-
-
-        // Find admin
-
-        const admin = await Admin.findOne({
-
-            email:
-                email.toLowerCase().trim()
-
-        });
-
-
-        // Admin not found
-
-        if (!admin) {
-
-            console.log("ADMIN NOT FOUND");
-
-            return res.status(401).json({
-
-                success: false,
-
-                message:
-                    "Invalid email or password."
-
-            });
-
-        }
-
-
-        // Compare password
-
-        const passwordMatch =
-            await bcrypt.compare(
-                password,
-                admin.password
-            );
-
-
-        // Password incorrect
-
-        if (!passwordMatch) {
-
-            console.log("WRONG PASSWORD");
-
-            return res.status(401).json({
-
-                success: false,
-
-                message:
-                    "Invalid email or password."
-
-            });
-
-        }
-
-
-        // Create login session
-
-        req.session.adminId =
-            admin._id.toString();
-
-        req.session.adminName =
-            admin.name;
-
-        req.session.adminEmail =
-            admin.email;
-
-
-        console.log(
-            "ADMIN LOGIN SUCCESSFUL"
-        );
-
-
-        res.json({
-
-            success: true,
-
-            message:
-                "Login successful!"
-
-        });
-
-
-    } catch (error) {
-
-        console.error(
-            "ADMIN LOGIN ERROR:"
-        );
-
-        console.error(error);
-
-
-        res.status(500).json({
-
-            success: false,
-
-            message:
-                "Login failed.",
-
-            error:
-                error.message
-
-        });
-
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Email and password are required.",
+      });
     }
 
-});
+    const admin = await Admin.findOne({
+      email: email.toLowerCase().trim(),
+    });
 
+    if (!admin) {
+      console.log("ADMIN NOT FOUND");
+
+      return res.status(401).json({
+        success: false,
+        message: "Invalid email or password.",
+      });
+    }
+
+    const passwordMatch = await bcrypt.compare(password, admin.password);
+
+    if (!passwordMatch) {
+      console.log("WRONG PASSWORD");
+
+      return res.status(401).json({
+        success: false,
+        message: "Invalid email or password.",
+      });
+    }
+
+    req.session.adminId = admin._id.toString();
+    req.session.adminName = admin.name;
+    req.session.adminEmail = admin.email;
+
+    console.log("ADMIN LOGIN SUCCESSFUL");
+
+    res.json({
+      success: true,
+      message: "Login successful!",
+    });
+  } catch (error) {
+    console.error("ADMIN LOGIN ERROR:");
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+      message: "Login failed.",
+      error: error.message,
+    });
+  }
+});
 
 // ==================================================
 // CHECK ADMIN LOGIN
 // ==================================================
 
 app.get("/api/admin/check", (req, res) => {
-
-    if (!req.session.adminId) {
-
-        return res.status(401).json({
-
-            success: false,
-
-            message:
-                "Not authenticated."
-
-        });
-
-    }
-
-
-    res.json({
-
-        success: true,
-
-        admin: {
-
-            id:
-                req.session.adminId,
-
-            name:
-                req.session.adminName,
-
-            email:
-                req.session.adminEmail
-
-        }
-
+  if (!req.session.adminId) {
+    return res.status(401).json({
+      success: false,
+      message: "Not authenticated.",
     });
+  }
 
+  res.json({
+    success: true,
+
+    admin: {
+      id: req.session.adminId,
+      name: req.session.adminName,
+      email: req.session.adminEmail,
+    },
+  });
 });
-
 
 // ==================================================
 // PROTECT ADMIN DASHBOARD
 // ==================================================
 
 app.get("/admin.html", (req, res) => {
+  if (!req.session.adminId) {
+    return res.redirect("/admin-login.html");
+  }
 
-    if (!req.session.adminId) {
-
-        return res.redirect(
-            "/admin-login.html"
-        );
-
-    }
-
-
-    res.sendFile(
-
-        path.join(
-            __dirname,
-            "public",
-            "admin.html"
-        )
-
-    );
-
+  res.sendFile(path.join(__dirname, "public", "admin.html"));
 });
-
 
 // ==================================================
 // SERVE FRONTEND FILES
 // ==================================================
 
-app.use(
-    express.static(
-        path.join(
-            __dirname,
-            "public"
-        )
-    )
-);
-
+app.use(express.static(path.join(__dirname, "public")));
 
 // ==================================================
 // ADMIN LOGOUT
 // ==================================================
 
-app.post(
-    "/api/admin/logout",
-    (req, res) => {
+app.post("/api/admin/logout", (req, res) => {
+  req.session.destroy((error) => {
+    if (error) {
+      console.error("LOGOUT ERROR:", error);
 
-        req.session.destroy((error) => {
-
-            if (error) {
-
-                console.error(
-                    "LOGOUT ERROR:",
-                    error
-                );
-
-                return res.status(500).json({
-
-                    success: false,
-
-                    message:
-                        "Logout failed."
-
-                });
-
-            }
-
-
-            res.json({
-
-                success: true,
-
-                message:
-                    "Logged out successfully."
-
-            });
-
-        });
-
+      return res.status(500).json({
+        success: false,
+        message: "Logout failed.",
+      });
     }
-);
 
+    res.json({
+      success: true,
+      message: "Logged out successfully.",
+    });
+  });
+});
 
 // ==================================================
 // CREATE NEW BOOKING
 // ==================================================
 
-app.post(
-    "/api/bookings",
-    async (req, res) => {
+app.post("/api/bookings", async (req, res) => {
+  try {
+    console.log("---------------------------------");
+    console.log("NEW BOOKING RECEIVED");
+    console.log(req.body);
+    console.log("---------------------------------");
 
-        try {
+    // ------------------------------------------
+    // SAVE BOOKING TO MONGODB
+    // ------------------------------------------
 
-            console.log(
-                "---------------------------------"
-            );
+    const booking = new Booking(req.body);
 
-            console.log(
-                "NEW BOOKING RECEIVED"
-            );
+    const savedBooking = await booking.save();
 
-            console.log(req.body);
+    console.log("BOOKING SAVED SUCCESSFULLY");
+    console.log(savedBooking);
 
-            console.log(
-                "---------------------------------"
-            );
+    // ------------------------------------------
+    // SEND APPRECIATION EMAIL
+    // ------------------------------------------
 
+    try {
+      if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
+        const mailOptions = {
+          from: `"Queen Trails Safaris" <${process.env.EMAIL_USER}>`,
 
-            // Create booking
+          to: savedBooking.email,
 
-            const booking =
-                new Booking(req.body);
+          subject: "Thank You for Trusting Queen Trails Safaris",
 
+          html: `
 
-            // Save booking
+                        <div style="
+                            font-family: Arial, sans-serif;
+                            max-width: 600px;
+                            margin: 30px auto;
+                            padding: 30px;
+                            color: #333;
+                            border: 1px solid #ddd;
+                            border-radius: 10px;
+                            background-color: #ffffff;
+                        ">
 
-            const savedBooking =
-                await booking.save();
+                            <h2 style="
+                                color: #0f3f25;
+                                margin-bottom: 20px;
+                            ">
+                                Thank You, ${savedBooking.fullname}!
+                            </h2>
 
+                            <p>
+                                Thank you for trusting
+                                <strong>Queen Trails Safaris</strong>
+                                with your travel experience.
+                            </p>
 
-            console.log(
-                "BOOKING SAVED TO MONGODB"
-            );
+                            <p>
+                                We are delighted to receive your
+                                booking request and truly appreciate
+                                you choosing us for your adventure.
+                            </p>
 
-            console.log(
-                savedBooking
-            );
+                            <h3 style="
+                                color: #0f3f25;
+                                margin-top: 25px;
+                            ">
+                                Your Booking Details
+                            </h3>
 
+                            <p>
+                                <strong>Destination:</strong>
+                                ${savedBooking.destination}
+                            </p>
 
-            res.status(201).json({
+                            <p>
+                                <strong>Package:</strong>
+                                ${savedBooking.package}
+                            </p>
 
-                success: true,
+                            <p>
+                                <strong>Travel Date:</strong>
+                                ${new Date(
+                                  savedBooking.travelDate,
+                                ).toLocaleDateString()}
+                            </p>
 
-                message:
-                    "Booking saved successfully!",
+                            <p>
+                                <strong>Number of Travelers:</strong>
+                                ${savedBooking.travelers}
+                            </p>
 
-                booking:
-                    savedBooking
+                            <p>
+                                Your booking has been received
+                                successfully. Our team will review
+                                your request and contact you shortly
+                                with confirmation and any additional
+                                information.
+                            </p>
 
-            });
+                            <p>
+                                We look forward to giving you an
+                                unforgettable experience with
+                                <strong>
+                                    Queen Trails Safaris
+                                </strong>.
+                            </p>
 
+                            <p>
+                                <strong>
+                                    Thank you for choosing and
+                                    trusting Queen Trails Safaris.
+                                </strong>
+                            </p>
 
-        } catch (error) {
+                            <br>
 
-            console.error(
-                "BOOKING SAVE ERROR:"
-            );
+                            <p>
+                                Warm regards,<br>
+                                <strong>
+                                    Queen Trails Safaris
+                                </strong>
+                            </p>
 
-            console.error(error);
+                        </div>
 
+                    `,
+        };
 
-            res.status(500).json({
+        await emailTransporter.sendMail(mailOptions);
 
-                success: false,
+        console.log("APPRECIATION EMAIL SENT TO:", savedBooking.email);
+      } else {
+        console.log("EMAIL NOT SENT: EMAIL_USER or EMAIL_PASSWORD is missing.");
+      }
+    } catch (emailError) {
+      console.error("EMAIL FAILED:");
 
-                message:
-                    "Failed to save booking.",
+      console.error(emailError.message);
 
-                error:
-                    error.message
-
-            });
-
-        }
-
+      // IMPORTANT:
+      // The booking is already saved.
+      // Email failure does NOT cancel the booking.
     }
-);
+    // ------------------------------------------
+    // SEND NEW BOOKING NOTIFICATION TO MANAGER
+    // ------------------------------------------
 
+    try {
+      if (
+        process.env.EMAIL_USER &&
+        process.env.EMAIL_PASSWORD &&
+        process.env.MANAGER_EMAIL
+      ) {
+        const managerMailOptions = {
+          from: `"Queen Trails Safaris" <${process.env.EMAIL_USER}>`,
+
+          to: process.env.MANAGER_EMAIL,
+
+          subject: "New Booking Received - Queen Trails Safaris",
+
+          html: `
+
+                        <div style="
+                            font-family: Arial, sans-serif;
+                            max-width: 600px;
+                            margin: 30px auto;
+                            padding: 30px;
+                            color: #333;
+                            border: 1px solid #ddd;
+                            border-radius: 10px;
+                            background-color: #ffffff;
+                        ">
+
+                            <h2 style="color: #0f3f25;">
+                                New Booking Received
+                            </h2>
+
+                            <p>
+                                A new client has submitted a booking
+                                through the Queen Trails Safaris website.
+                            </p>
+
+                            <h3>Booking Details</h3>
+
+                            <p>
+                                <strong>Client:</strong>
+                                ${savedBooking.fullname}
+                            </p>
+
+                            <p>
+                                <strong>Email:</strong>
+                                ${savedBooking.email}
+                            </p>
+
+                            <p>
+                                <strong>Destination:</strong>
+                                ${savedBooking.destination}
+                            </p>
+
+                            <p>
+                                <strong>Package:</strong>
+                                ${savedBooking.package}
+                            </p>
+
+                            <p>
+                                <strong>Travel Date:</strong>
+                                ${new Date(
+                                  savedBooking.travelDate,
+                                ).toLocaleDateString()}
+                            </p>
+
+                            <p>
+                                <strong>Number of Travelers:</strong>
+                                ${savedBooking.travelers}
+                            </p>
+
+                            <p>
+                                Please log in to the admin dashboard
+                                to review this booking.
+                            </p>
+
+                            <p>
+                                <strong>
+                                    Queen Trails Safaris
+                                </strong>
+                            </p>
+
+                        </div>
+
+                    `,
+        };
+
+        await emailTransporter.sendMail(managerMailOptions);
+
+        console.log(
+          "NEW BOOKING NOTIFICATION SENT TO MANAGER:",
+          process.env.MANAGER_EMAIL,
+        );
+      } else {
+        console.log(
+          "MANAGER EMAIL NOT SENT: Email configuration is incomplete.",
+        );
+      }
+    } catch (managerEmailError) {
+      console.error("MANAGER BOOKING EMAIL FAILED:");
+
+      console.error(managerEmailError.message);
+    }
+    // ------------------------------------------
+    // RETURN SUCCESS RESPONSE
+    // ------------------------------------------
+
+    res.status(201).json({
+      success: true,
+
+      message: "Booking submitted successfully.",
+
+      booking: savedBooking,
+    });
+  } catch (error) {
+    console.error("BOOKING ERROR:");
+
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+
+      message: "Failed to save booking.",
+
+      error: error.message,
+    });
+  }
+});
 
 // ==================================================
 // GET ALL BOOKINGS
 // ==================================================
 
-app.get(
-    "/api/bookings",
-    async (req, res) => {
+app.get("/api/bookings", async (req, res) => {
+  try {
+    const bookings = await Booking.find().sort({
+      createdAt: -1,
+    });
 
-        try {
+    res.json({
+      success: true,
 
-            const bookings =
-                await Booking
-                    .find()
-                    .sort({
-                        createdAt: -1
-                    });
+      bookings: bookings,
+    });
+  } catch (error) {
+    console.error("ERROR GETTING BOOKINGS:");
 
+    console.error(error);
 
-            res.json({
+    res.status(500).json({
+      success: false,
 
-                success: true,
+      message: "Failed to retrieve bookings.",
 
-                bookings:
-                    bookings
-
-            });
-
-
-        } catch (error) {
-
-            console.error(
-                "ERROR GETTING BOOKINGS:"
-            );
-
-            console.error(error);
-
-
-            res.status(500).json({
-
-                success: false,
-
-                message:
-                    "Failed to retrieve bookings.",
-
-                error:
-                    error.message
-
-            });
-
-        }
-
-    }
-);
-
+      error: error.message,
+    });
+  }
+});
 
 // ==================================================
 // UPDATE BOOKING STATUS
 // ==================================================
 
-app.put(
-    "/api/bookings/:id/status",
-    async (req, res) => {
+app.put("/api/bookings/:id/status", async (req, res) => {
+  try {
+    const { status } = req.body;
 
-        try {
+    const allowedStatuses = [
+      "Pending",
+      "Confirmed",
+      "Rejected",
+      "Cancelled",
+      "Completed",
+    ];
 
-            const { status } =
-                req.body;
+    if (!allowedStatuses.includes(status)) {
+      return res.status(400).json({
+        success: false,
 
-
-            // Allowed statuses
-
-            const allowedStatuses = [
-
-                "Pending",
-
-                "Confirmed",
-
-                "Rejected",
-
-                "Cancelled",
-
-                "Completed"
-
-            ];
-
-
-            if (
-                !allowedStatuses.includes(
-                    status
-                )
-            ) {
-
-                return res.status(400).json({
-
-                    success: false,
-
-                    message:
-                        "Invalid booking status."
-
-                });
-
-            }
-
-
-            // Update booking
-
-            const booking =
-                await Booking.findByIdAndUpdate(
-
-                    req.params.id,
-
-                    {
-                        status:
-                            status
-                    },
-
-                    {
-                        new: true,
-
-                        runValidators: true
-                    }
-
-                );
-
-
-            // Booking not found
-
-            if (!booking) {
-
-                return res.status(404).json({
-
-                    success: false,
-
-                    message:
-                        "Booking not found."
-
-                });
-
-            }
-
-
-            console.log(
-                `Booking ${booking._id} changed to ${status}`
-            );
-
-
-            res.json({
-
-                success: true,
-
-                message:
-                    `Booking ${status.toLowerCase()} successfully!`,
-
-                booking:
-                    booking
-
-            });
-
-
-        } catch (error) {
-
-            console.error(
-                "STATUS UPDATE ERROR:"
-            );
-
-            console.error(error);
-
-
-            res.status(500).json({
-
-                success: false,
-
-                message:
-                    "Failed to update booking.",
-
-                error:
-                    error.message
-
-            });
-
-        }
-
+        message: "Invalid booking status.",
+      });
     }
-);
 
+    const booking = await Booking.findByIdAndUpdate(
+      req.params.id,
+
+      {
+        status: status,
+      },
+
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
+
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+
+        message: "Booking not found.",
+      });
+    }
+
+    console.log(`Booking ${booking._id} changed to ${status}`);
+
+    res.json({
+      success: true,
+
+      message: `Booking ${status.toLowerCase()} successfully!`,
+
+      booking: booking,
+    });
+  } catch (error) {
+    console.error("STATUS UPDATE ERROR:");
+
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+
+      message: "Failed to update booking.",
+
+      error: error.message,
+    });
+  }
+});
 
 // ==================================================
 // DELETE BOOKING
 // ==================================================
 
-app.delete(
-    "/api/bookings/:id",
-    async (req, res) => {
+app.delete("/api/bookings/:id", async (req, res) => {
+  try {
+    const booking = await Booking.findByIdAndDelete(req.params.id);
 
-        try {
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
 
-            const booking =
-                await Booking.findByIdAndDelete(
-                    req.params.id
-                );
-
-
-            if (!booking) {
-
-                return res.status(404).json({
-
-                    success: false,
-
-                    message:
-                        "Booking not found."
-
-                });
-
-            }
-
-
-            console.log(
-                `Booking ${booking._id} deleted`
-            );
-
-
-            res.json({
-
-                success: true,
-
-                message:
-                    "Booking deleted successfully!"
-
-            });
-
-
-        } catch (error) {
-
-            console.error(
-                "DELETE BOOKING ERROR:"
-            );
-
-            console.error(error);
-
-
-            res.status(500).json({
-
-                success: false,
-
-                message:
-                    "Failed to delete booking.",
-
-                error:
-                    error.message
-
-            });
-
-        }
-
+        message: "Booking not found.",
+      });
     }
-);
+
+    console.log(`Booking ${booking._id} deleted`);
+
+    res.json({
+      success: true,
+
+      message: "Booking deleted successfully!",
+    });
+  } catch (error) {
+    console.error("DELETE BOOKING ERROR:");
+
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+
+      message: "Failed to delete booking.",
+
+      error: error.message,
+    });
+  }
+});
 
 // ==================================================
 // SUBMIT CLIENT REVIEW
 // ==================================================
 
 app.post("/api/reviews", async (req, res) => {
+  try {
+    const {
+      clientName,
+      email,
+      bookingId,
+      destination,
+      tour,
+      rating,
+      reviewMessage,
+    } = req.body;
 
-    try {
+    // --------------------------------------
+    // CHECK REQUIRED INFORMATION
+    // --------------------------------------
 
-        const {
-            clientName,
-            email,
-            bookingId,
-            destination,
-            tour,
-            rating,
-            reviewMessage
-        } = req.body;
+    if (
+      !clientName ||
+      !email ||
+      !destination ||
+      !tour ||
+      !rating ||
+      !reviewMessage
+    ) {
+      return res.status(400).json({
+        success: false,
 
-
-        // Check required information
-
-        if (
-            !clientName ||
-            !email ||
-            !destination ||
-            !tour ||
-            !rating ||
-            !reviewMessage
-        ) {
-
-            return res.status(400).json({
-
-                success: false,
-
-                message:
-                    "Please fill in all required fields."
-
-            });
-
-        }
-
-
-        // Create review
-
-        const review = new Review({
-
-            clientName:
-                clientName.trim(),
-
-            email:
-                email.toLowerCase().trim(),
-
-            bookingId:
-                bookingId || undefined,
-
-            destination:
-                destination.trim(),
-
-            tour:
-                tour.trim(),
-
-            rating:
-                Number(rating),
-
-            reviewMessage:
-                reviewMessage.trim(),
-
-            status:
-                "Pending"
-
-        });
-
-
-        // Save review
-
-        const savedReview =
-            await review.save();
-
-
-        console.log(
-            "REVIEW SAVED SUCCESSFULLY"
-        );
-
-        console.log(savedReview);
-
-
-        res.status(201).json({
-
-            success: true,
-
-            message:
-                "Thank you! Your review has been submitted and is awaiting approval.",
-
-            review:
-                savedReview
-
-        });
-
-
-    } catch (error) {
-
-        console.error(
-            "REVIEW SAVE ERROR:"
-        );
-
-        console.error(error);
-
-
-        res.status(500).json({
-
-            success: false,
-
-            message:
-                "Failed to submit review.",
-
-            error:
-                error.message
-
-        });
-
+        message: "Please fill in all required fields.",
+      });
     }
 
+    // --------------------------------------
+    // CREATE REVIEW
+    // --------------------------------------
+
+    const review = new Review({
+      clientName: clientName.trim(),
+
+      email: email.toLowerCase().trim(),
+
+      bookingId: bookingId || undefined,
+
+      destination: destination.trim(),
+
+      tour: tour.trim(),
+
+      rating: Number(rating),
+
+      reviewMessage: reviewMessage.trim(),
+
+      status: "Pending",
+    });
+
+    // --------------------------------------
+    // SAVE REVIEW
+    // --------------------------------------
+
+    const savedReview = await review.save();
+    // --------------------------------------
+    // SEND NEW REVIEW NOTIFICATION TO MANAGER
+    // --------------------------------------
+
+    try {
+      if (
+        process.env.EMAIL_USER &&
+        process.env.EMAIL_PASSWORD &&
+        process.env.MANAGER_EMAIL
+      ) {
+        const managerReviewMailOptions = {
+          from: `"Queen Trails Safaris" <${process.env.EMAIL_USER}>`,
+
+          to: process.env.MANAGER_EMAIL,
+
+          subject: "New Customer Review - Queen Trails Safaris",
+
+          html: `
+
+                <div style="
+                    font-family: Arial, sans-serif;
+                    max-width: 600px;
+                    margin: 30px auto;
+                    padding: 30px;
+                    color: #333;
+                    border: 1px solid #ddd;
+                    border-radius: 10px;
+                    background-color: #ffffff;
+                ">
+
+                    <h2 style="color: #0f3f25;">
+                        New Customer Review
+                    </h2>
+
+                    <p>
+                        A new customer review has been
+                        submitted on the Queen Trails Safaris
+                        website and is awaiting approval.
+                    </p>
+
+                    <h3>Review Details</h3>
+
+                    <p>
+                        <strong>Client:</strong>
+                        ${savedReview.clientName}
+                    </p>
+
+                    <p>
+                        <strong>Email:</strong>
+                        ${savedReview.email}
+                    </p>
+
+                    <p>
+                        <strong>Destination:</strong>
+                        ${savedReview.destination}
+                    </p>
+
+                    <p>
+                        <strong>Tour:</strong>
+                        ${savedReview.tour}
+                    </p>
+
+                    <p>
+                        <strong>Rating:</strong>
+                        ${savedReview.rating} / 5
+                    </p>
+
+                    <p>
+                        <strong>Review:</strong>
+                        ${savedReview.reviewMessage}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        Pending Approval
+                    </p>
+
+                    <p>
+                        Please log in to the admin dashboard
+                        to review and approve this review.
+                    </p>
+
+                    <p>
+                        <strong>
+                            Queen Trails Safaris
+                        </strong>
+                    </p>
+
+                </div>
+
+            `,
+        };
+
+        await emailTransporter.sendMail(managerReviewMailOptions);
+
+        console.log(
+          "NEW REVIEW NOTIFICATION SENT TO MANAGER:",
+          process.env.MANAGER_EMAIL,
+        );
+      } else {
+        console.log(
+          "MANAGER REVIEW EMAIL NOT SENT: Email configuration is incomplete.",
+        );
+      }
+    } catch (managerReviewEmailError) {
+      console.error("MANAGER REVIEW EMAIL FAILED:");
+
+      console.error(managerReviewEmailError.message);
+    }
+
+    console.log("REVIEW SAVED SUCCESSFULLY");
+
+    console.log(savedReview);
+
+    res.status(201).json({
+      success: true,
+
+      message:
+        "Thank you! Your review has been submitted and is awaiting approval.",
+
+      review: savedReview,
+    });
+  } catch (error) {
+    console.error("REVIEW SAVE ERROR:");
+
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+
+      message: "Failed to submit review.",
+
+      error: error.message,
+    });
+  }
 });
 
 // ==================================================
@@ -803,51 +818,163 @@ app.post("/api/reviews", async (req, res) => {
 // ==================================================
 
 app.get("/api/reviews", async (req, res) => {
+  try {
+    const reviews = await Review.find({
+      status: "Approved",
+    }).sort({
+      createdAt: -1,
+    });
 
-    try {
+    res.json({
+      success: true,
 
-        const reviews =
-            await Review.find({
-                status: "Approved"
-            })
-            .sort({
-                createdAt: -1
-            });
+      reviews: reviews,
+    });
+  } catch (error) {
+    console.error("ERROR GETTING REVIEWS:");
 
+    console.error(error);
 
-        res.json({
+    res.status(500).json({
+      success: false,
 
-            success: true,
+      message: "Failed to retrieve reviews.",
 
-            reviews:
-                reviews
+      error: error.message,
+    });
+  }
+});
 
-        });
+// ==================================================
+// GET ALL REVIEWS FOR ADMIN
+// ==================================================
 
+app.get("/api/admin/reviews", async (req, res) => {
+  try {
+    const reviews = await Review.find().sort({
+      createdAt: -1,
+    });
 
-    } catch (error) {
+    res.json({
+      success: true,
 
-        console.error(
-            "ERROR GETTING REVIEWS:"
-        );
+      reviews: reviews,
+    });
+  } catch (error) {
+    console.error("ERROR GETTING ADMIN REVIEWS:");
 
-        console.error(error);
+    console.error(error);
 
+    res.status(500).json({
+      success: false,
 
-        res.status(500).json({
+      message: "Failed to retrieve reviews.",
 
-            success: false,
+      error: error.message,
+    });
+  }
+});
 
-            message:
-                "Failed to retrieve reviews.",
+// ==================================================
+// UPDATE REVIEW STATUS
+// APPROVE OR REJECT
+// ==================================================
 
-            error:
-                error.message
+app.put("/api/admin/reviews/:id/status", async (req, res) => {
+  try {
+    const { status } = req.body;
 
-        });
+    const allowedStatuses = ["Pending", "Approved", "Rejected"];
 
+    if (!allowedStatuses.includes(status)) {
+      return res.status(400).json({
+        success: false,
+
+        message: "Invalid review status.",
+      });
     }
 
+    const review = await Review.findByIdAndUpdate(
+      req.params.id,
+
+      {
+        status: status,
+      },
+
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
+
+    if (!review) {
+      return res.status(404).json({
+        success: false,
+
+        message: "Review not found.",
+      });
+    }
+
+    console.log(`Review ${review._id} changed to ${status}`);
+
+    res.json({
+      success: true,
+
+      message: `Review ${status.toLowerCase()} successfully!`,
+
+      review: review,
+    });
+  } catch (error) {
+    console.error("REVIEW STATUS UPDATE ERROR:");
+
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+
+      message: "Failed to update review.",
+
+      error: error.message,
+    });
+  }
+});
+
+// ==================================================
+// DELETE REVIEW
+// ==================================================
+
+app.delete("/api/admin/reviews/:id", async (req, res) => {
+  try {
+    const review = await Review.findByIdAndDelete(req.params.id);
+
+    if (!review) {
+      return res.status(404).json({
+        success: false,
+
+        message: "Review not found.",
+      });
+    }
+
+    console.log(`Review ${review._id} deleted`);
+
+    res.json({
+      success: true,
+
+      message: "Review deleted successfully!",
+    });
+  } catch (error) {
+    console.error("DELETE REVIEW ERROR:");
+
+    console.error(error);
+
+    res.status(500).json({
+      success: false,
+
+      message: "Failed to delete review.",
+
+      error: error.message,
+    });
+  }
 });
 
 // ==================================================
@@ -855,268 +982,48 @@ app.get("/api/reviews", async (req, res) => {
 // ==================================================
 
 async function startServer() {
+  try {
+    // ------------------------------------------
+    // CONNECT TO MONGODB
+    // ------------------------------------------
 
-    try {
+    await mongoose.connect(MONGO_URI);
 
-        // Connect to MongoDB
+    console.log("=================================");
 
-        await mongoose.connect(
-            "mongodb://127.0.0.1:27017/queen_trails_safaris"
-        );
+    console.log("MongoDB connected successfully");
 
+    console.log("Database:", mongoose.connection.name);
 
-        console.log(
-            "================================="
-        );
+    console.log("=================================");
 
-        console.log(
-            "MongoDB connected successfully"
-        );
+    // ------------------------------------------
+    // CHECK EMAIL CONFIGURATION
+    // ------------------------------------------
 
-        console.log(
-            "Database:",
-            mongoose.connection.name
-        );
+    if (process.env.EMAIL_USER && process.env.EMAIL_PASSWORD) {
+      console.log("Email configuration detected");
+    } else {
+      console.log("WARNING: Email credentials are not configured.");
 
-        console.log(
-            "================================="
-        );
-
-
-        // Start Express
-
-        app.listen(
-            PORT,
-            () => {
-
-                console.log(
-                    `Queen Trails Safaris running on http://localhost:${PORT}`
-                );
-
-            }
-        );
-
-
-    } catch (error) {
-
-        console.error(
-            "MongoDB connection failed:"
-        );
-
-        console.error(error);
-
-        process.exit(1);
-
+      console.log("Bookings will still be saved.");
     }
 
+    // ------------------------------------------
+    // START EXPRESS SERVER
+    // ------------------------------------------
+
+    app.listen(PORT, () => {
+      console.log(`Queen Trails Safaris running on http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.error("MongoDB connection failed:");
+
+    console.error(error);
+
+    process.exit(1);
+  }
 }
-
-// ==================================================
-// GET ALL REVIEWS FOR ADMIN
-// ==================================================
-
-app.get("/api/admin/reviews", async (req, res) => {
-
-    try {
-
-        const reviews = await Review.find()
-            .sort({ createdAt: -1 });
-
-        res.json({
-
-            success: true,
-
-            reviews: reviews
-
-        });
-
-    } catch (error) {
-
-        console.error(
-            "ERROR GETTING ADMIN REVIEWS:"
-        );
-
-        console.error(error);
-
-        res.status(500).json({
-
-            success: false,
-
-            message: "Failed to retrieve reviews.",
-
-            error: error.message
-
-        });
-
-    }
-
-});
-
-
-// ==================================================
-// UPDATE REVIEW STATUS
-// APPROVE OR REJECT
-// ==================================================
-
-app.put(
-    "/api/admin/reviews/:id/status",
-    async (req, res) => {
-
-        try {
-
-            const { status } = req.body;
-
-            const allowedStatuses = [
-                "Pending",
-                "Approved",
-                "Rejected"
-            ];
-
-            if (!allowedStatuses.includes(status)) {
-
-                return res.status(400).json({
-
-                    success: false,
-
-                    message: "Invalid review status."
-
-                });
-
-            }
-
-            const review =
-                await Review.findByIdAndUpdate(
-
-                    req.params.id,
-
-                    {
-                        status: status
-                    },
-
-                    {
-                        new: true,
-                        runValidators: true
-                    }
-
-                );
-
-            if (!review) {
-
-                return res.status(404).json({
-
-                    success: false,
-
-                    message: "Review not found."
-
-                });
-
-            }
-
-            console.log(
-                `Review ${review._id} changed to ${status}`
-            );
-
-            res.json({
-
-                success: true,
-
-                message:
-                    `Review ${status.toLowerCase()} successfully!`,
-
-                review: review
-
-            });
-
-        } catch (error) {
-
-            console.error(
-                "REVIEW STATUS UPDATE ERROR:"
-            );
-
-            console.error(error);
-
-            res.status(500).json({
-
-                success: false,
-
-                message:
-                    "Failed to update review.",
-
-                error:
-                    error.message
-
-            });
-
-        }
-
-    }
-);
-
-
-// ==================================================
-// DELETE REVIEW
-// ==================================================
-
-app.delete(
-    "/api/admin/reviews/:id",
-    async (req, res) => {
-
-        try {
-
-            const review =
-                await Review.findByIdAndDelete(
-                    req.params.id
-                );
-
-            if (!review) {
-
-                return res.status(404).json({
-
-                    success: false,
-
-                    message: "Review not found."
-
-                });
-
-            }
-
-            console.log(
-                `Review ${review._id} deleted`
-            );
-
-            res.json({
-
-                success: true,
-
-                message:
-                    "Review deleted successfully!"
-
-            });
-
-        } catch (error) {
-
-            console.error(
-                "DELETE REVIEW ERROR:"
-            );
-
-            console.error(error);
-
-            res.status(500).json({
-
-                success: false,
-
-                message:
-                    "Failed to delete review.",
-
-                error:
-                    error.message
-
-            });
-
-        }
-
-    }
-);
 
 // ==================================================
 // RUN SERVER
