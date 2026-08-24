@@ -8,7 +8,7 @@ const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 
 const Booking = require("./models/booking");
-const Admin = require("./models/Admin");
+const Admin = require("./models/admin");
 const Review = require("./models/Review");
 
 const app = express();
