@@ -7,7 +7,7 @@ const session = require("express-session");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 
-const Booking = require("./models/Booking");
+const Booking = require("./models/booking");
 const Admin = require("./models/Admin");
 const Review = require("./models/Review");
 
