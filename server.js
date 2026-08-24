@@ -9,7 +9,7 @@ const nodemailer = require("nodemailer");
 
 const Booking = require("./models/booking");
 const Admin = require("./models/admin");
-const Review = require("./models/Review");
+const Review = require("./models/review");
 
 const app = express();
 
