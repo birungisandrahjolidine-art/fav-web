@@ -1,4 +1,4 @@
-
+```html
 <!doctype html>
 <html lang="en">
   <head>
@@ -82,6 +82,7 @@
           <li>
             <a href="contact.html" class="active">Contact Us</a>
           </li>
+
           <li><a href="Reviews.html">Reviews</a></li>
         </ul>
       </nav>
@@ -150,6 +151,7 @@
               <h3>Email</h3>
 
               <p>danieloscarkatoot@gmail.com</p>
+              <p>queentrailssafaris@gmail.com</p>
             </div>
           </div>
 
@@ -166,21 +168,6 @@
                 8:00 AM - 6:00 PM
               </p>
             </div>
-          </div>
-
-          <!-- SOCIAL MEDIA -->
-          <div class="contact-socials">
-            <a href="#" aria-label="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-
-            <a href="#" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-
-            <a href="#" aria-label="WhatsApp">
-              <i class="fab fa-whatsapp"></i>
-            </a>
           </div>
         </div>
 
@@ -222,15 +209,18 @@
               />
             </div>
 
+            
             <!-- PHONE -->
             <div class="form-group">
-              <label for="phone"> Phone Number </label>
+              <label for="phone">Phone Number</label>
 
               <input
                 type="tel"
                 id="phone"
                 name="phone"
-                placeholder="+256 7XXXXXXXX"
+                placeholder="Enter your phone number"
+                pattern="^\+?[0-9\s().-]{7,20}$"
+                title="Please enter a valid phone number"
                 required
               />
             </div>
@@ -285,6 +275,29 @@
               </select>
             </div>
 
+            <!-- TOUR DURATION -->
+            <div class="form-group">
+              <label for="duration"> Tour Duration </label>
+
+              <select id="duration" name="duration" required>
+                <option value="">Select Tour Duration</option>
+
+                <option value="1 Day">1 Day</option>
+
+                <option value="2 Days / 1 Night">2 Days / 1 Night</option>
+
+                <option value="3 Days / 2 Nights">3 Days / 2 Nights</option>
+
+                <option value="5 Days / 4 Nights">5 Days / 4 Nights</option>
+
+                <option value="7 Days / 6 Nights">7 Days / 6 Nights</option>
+
+                <option value="2 Weeks / 13 Nights">2 Weeks / 13 Nights</option>
+
+                <option value="Custom Duration">Custom Duration</option>
+              </select>
+            </div>
+
             <!-- DATE AND TRAVELERS -->
             <div class="form-row">
               <div class="form-group">
@@ -335,51 +348,40 @@
     </section>
 
     <!-- ================= FOOTER ================= -->
-    <footer>
+    <footer class="footer">
       <div class="footer-container">
-        <!-- COMPANY -->
-        <div>
-          <h3>Queen Trails Safaris</h3>
+        <div class="footer-brand">
+          <h3>QUEEN TRAILS SAFARIS</h3>
 
-          <p>Every Trail creates unforgettable memories.</p>
+          <p>
+            Discover Uganda. Experience the wild. Create unforgettable memories.
+          </p>
         </div>
 
-        <!-- QUICK LINKS -->
-        <div>
-          <h3>Quick Links</h3>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
 
-          <p><a href="home.html">Home</a></p>
-          <p><a href="aboutus.html">About Us</a></p>
-
-          <p><a href="contact.html">Contact</a></p>
+          <a href="home.html">Home</a>
+          <a href="aboutus.html">About Us</a>
+          <a href="Reviews.html">Reviews</a>
+          <a href="contact.html">Contact</a>
         </div>
 
-        <!-- SOCIALS -->
-        <div>
-          <h3>Connect With Us</h3>
+        <div class="footer-links">
+          <h4>Explore</h4>
 
-          <div class="socials">
-            <a href="#">
-              <i class="fab fa-facebook"></i>
-            </a>
-
-            <a href="#">
-              <i class="fab fa-instagram"></i>
-            </a>
-
-            <a href="#">
-              <i class="fab fa-whatsapp"></i>
-            </a>
-          </div>
+          <a href="tours.html">Safari Packages</a>
+          <a href="contact.html">Book a Safari</a>
+          <a href="Reviews.html">Guest Experiences</a>
         </div>
       </div>
 
-      <p class="copyright">
-        © 2026 Queen Trails Safaris | Katunguru, Queen Elizabeth National Park,
-        Uganda
-      </p>
+      <div class="footer-bottom">
+        <p>© 2026 Queen Trails Safaris. All rights reserved.</p>
+      </div>
     </footer>
-    <script src="contact.js"></script>
+
+    <script src="contact.js?v=2"></script>
   </body>
 </html>
 ```

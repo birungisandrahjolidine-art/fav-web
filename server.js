@@ -283,6 +283,11 @@ app.post("/api/bookings", async (req, res) => {
                             </p>
 
                             <p>
+                              <strong>Duration:</strong>
+                              ${savedBooking.duration}
+                            </p>
+
+                            <p>
                                 <strong>Travel Date:</strong>
                                 ${new Date(
                                   savedBooking.travelDate,
@@ -339,13 +344,10 @@ app.post("/api/bookings", async (req, res) => {
       }
     } catch (emailError) {
       console.error("EMAIL FAILED:");
-
+    
       console.error(emailError.message);
-
-      // IMPORTANT:
-      // The booking is already saved.
-      // Email failure does NOT cancel the booking.
     }
+      
     // ------------------------------------------
     // SEND NEW BOOKING NOTIFICATION TO MANAGER
     // ------------------------------------------
@@ -406,7 +408,10 @@ app.post("/api/bookings", async (req, res) => {
                                 <strong>Package:</strong>
                                 ${savedBooking.package}
                             </p>
-
+                            <p>
+                                <strong>Duration:</strong>
+                                ${savedBooking.duration}
+                            </p>
                             <p>
                                 <strong>Travel Date:</strong>
                                 ${new Date(

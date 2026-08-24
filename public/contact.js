@@ -2,7 +2,7 @@ const bookingForm = document.getElementById("bookingForm");
 
 bookingForm.addEventListener("submit", async (event) => {
   event.preventDefault();
-
+  console.log("SUBMIT HANDLER FIRED");
   const formData = new FormData(bookingForm);
 
   const bookingData = {
@@ -11,9 +11,10 @@ bookingForm.addEventListener("submit", async (event) => {
     phone: formData.get("phone"),
     destination: formData.get("destination"),
     package: formData.get("package"),
+    duration: formData.get("duration"),
     travelDate: formData.get("travel-date"),
     travelers: formData.get("travelers"),
-    message: formData.get("message")
+    message: formData.get("message"),
   };
 
   console.log("Booking being sent:", bookingData);
@@ -23,10 +24,10 @@ bookingForm.addEventListener("submit", async (event) => {
       method: "POST",
 
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
 
-      body: JSON.stringify(bookingData)
+      body: JSON.stringify(bookingData),
     });
 
     const result = await response.json();
@@ -36,9 +37,8 @@ bookingForm.addEventListener("submit", async (event) => {
 
       bookingForm.reset();
     } else {
-      alert("Booking could not be submitted.");
+      alert(result.message || "Booking could not be submitted.");
     }
-
   } catch (error) {
     console.error("Booking error:", error);
 

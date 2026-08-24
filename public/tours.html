@@ -171,16 +171,6 @@
         gap: 8px;
       }
 
-      .dropdown > a::after {
-        content: "▾";
-        font-size: 0.85em;
-        transition: transform 0.3s ease;
-      }
-
-      .dropdown:hover > a::after {
-        transform: rotate(180deg);
-      }
-
       /* Dropdown */
       .dropdown-content {
         display: none;
@@ -255,11 +245,59 @@
         color: #d4af37;
       }
 
-      .copyright {
+      .footer {
+        background: #0b2d1b;
+        color: white;
+        padding-top: 55px;
+      }
+
+      .footer-container {
+        width: 92%;
+        max-width: 1150px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 50px;
+        padding-bottom: 45px;
+      }
+
+      .footer-brand h3 {
+        font-size: 17px;
+        margin-bottom: 13px;
+      }
+
+      .footer-brand p {
+        color: #b8c7bc;
+        max-width: 380px;
+        font-size: 13px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .footer-links h4 {
+        margin-bottom: 7px;
+        color: #e0a525;
+      }
+
+      .footer-links a {
+        color: #b8c7bc;
+        font-size: 13px;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
         text-align: center;
-        margin-top: 30px;
-        color: #888;
-        font-size: 14px;
+        padding: 20px;
+        color: #8ea196;
+        font-size: 12px;
       }
     </style>
   </head>
@@ -301,6 +339,7 @@
             </ul>
           </li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="Reviews.html">Reviews</a></li>
         </ul>
       </nav>
     </header>
@@ -395,41 +434,32 @@
       </div>
     </div>
 
-    <footer>
+    <footer class="footer">
       <div class="footer-container">
-        <div>
-          <h3>Queen Trails Safaris</h3>
-          <p>Every Trail creates unforgettable memories.</p>
+        <div class="footer-brand">
+          <h3>🌿 QUEEN TRAILS SAFARIS</h3>
+          <p>Discover Uganda. Experience the wild. Create unforgettable memories.</p>
         </div>
 
-        <div>
-          <h3>Quick Links</h3>
-          <p>Home</p>
-          <p>Tours</p>
-          <p>Services</p>
-          <p>Contact</p>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="home.html">Home</a>
+          <a href="aboutus.html">About Us</a>
+          <a href="Reviews.html">Reviews</a>
+          <a href="contact.html">Contact</a>
         </div>
 
-        <div>
-          <h3>Our Services</h3>
-          <p>Game Drives</p>
-          <p>Boat Cruises</p>
-          <p>Bird Watching</p>
-          <p>Chimp trekking</p>
-          <p>Accommodation</p>
-        </div>
-
-        <div>
-          <h3>Connect With Us</h3>
-          <div class="socials">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-whatsapp"></i>
-          </div>
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <a href="tours.html">Safari Packages</a>
+          <a href="contact.html">Book a Safari</a>
+          <a href="Reviews.html">Guest Experiences</a>
         </div>
       </div>
-      <p class="copyright">© 2026 Queen Trails Safaris | Katunguru, Queen Elizabeth National Park,
-        Uganda</p>
+
+      <div class="footer-bottom">
+        <p>© 2026 Queen Trails Safaris. All rights reserved.</p>
+      </div>
     </footer>
   </body>
 </html>

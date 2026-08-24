@@ -24,7 +24,10 @@
         color: #333;
       }
 
-      /* Header */
+      a {
+        text-decoration: none;
+      }
+
       header {
         background: #1b4332;
         color: white;
@@ -38,10 +41,6 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        font-size: 20px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
       }
 
       .logo img {
@@ -54,26 +53,29 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
+        color: white;
       }
 
       nav ul {
         display: flex;
         list-style: none;
+        gap: 12px;
+        align-items: center;
       }
 
       nav ul li {
-        margin-left: 25px;
+        position: relative;
       }
 
       nav ul li a {
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
         display: block;
+        color: white;
         padding: 15px 20px;
+        font-size: 18px;
       }
 
-      nav ul li a:hover {
+      nav ul li a:hover,
+      nav ul li a.active {
         color: #d4af37;
       }
 
@@ -176,54 +178,61 @@
         font-size: 18px;
       }
 
-      footer {
-        background: #0f3f25;
+      .footer {
+        background: #0b2d1b;
         color: white;
-        padding: 60px 80px 30px 80px;
+        padding-top: 55px;
       }
 
       .footer-container {
+        width: 92%;
+        max-width: 1150px;
+        margin: auto;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding-bottom: 40px;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 50px;
+        padding-bottom: 45px;
       }
 
-      .footer-container h3 {
-        margin-bottom: 20px;
-        font-size: 18px;
-        color: #fff;
-        font-weight: 600;
+      .footer-brand h3 {
+        font-size: 17px;
+        margin-bottom: 13px;
+        color: white;
       }
 
-      .footer-container p {
-        margin: 10px 0;
-        color: #bbb;
-        font-size: 15px;
+      .footer-brand p {
+        color: #b8c7bc;
+        max-width: 380px;
+        font-size: 13px;
       }
 
-      .socials {
-        margin-top: 20px;
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
       }
 
-      .socials i {
-        font-size: 24px;
-        margin-right: 15px;
-        cursor: pointer;
-        color: #bbb;
-        transition: color 0.3s ease;
+      .footer-links h4 {
+        margin-bottom: 7px;
+        color: #e0a525;
       }
 
-      .socials i:hover {
-        color: #d4af37;
+      .footer-links a {
+        color: #b8c7bc;
+        font-size: 13px;
+        text-decoration: none;
       }
 
-      .copyright {
+      .footer-links a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
         text-align: center;
-        margin-top: 30px;
-        color: #888;
-        font-size: 14px;
+        padding: 20px;
+        color: #8ea196;
+        font-size: 12px;
       }
       /* Dropdown Menu */
       nav ul li {
@@ -253,14 +262,13 @@
         gap: 8px;
       }
 
-      .dropdown > a::after {
-        content: "▾";
-        font-size: 0.85em;
-        margin-left: 4px;
-        transition: transform 0.3s ease;
+      .nav-caret {
+        display: inline-block;
+        font-size: 0.9em;
+        transition: transform 0.2s ease;
       }
 
-      .dropdown:hover > a::after {
+      .dropdown:hover .nav-caret {
         transform: rotate(180deg);
       }
 
@@ -295,7 +303,7 @@
         <ul>
           <li><a href="#">Home</a></li>
           <li class="dropdown">
-            <a href="#">Services </a>
+            <a href="#">Services <span class="nav-caret">▾</span></a>
             <ul class="dropdown-content">
               <li><a href="#">Game Drives</a></li>
               <li><a href="#">LuxuryBoat Cruises</a></li>
@@ -325,7 +333,7 @@
             </ul>
           </li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="Reviews.html">Review</a></li> 
+          <li><a href="Reviews.html">Reviews</a></li> 
         </ul>
       </nav>
     </header>
@@ -373,41 +381,32 @@
 
     
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
       <div class="footer-container">
-        <div>
-          <h3>Queen Trails Safaris</h3>
-          <p>Every Trail creates unforgettable memories.</p>
+        <div class="footer-brand">
+          <h3>🌿 QUEEN TRAILS SAFARIS</h3>
+          <p>Discover Uganda. Experience the wild. Create unforgettable memories.</p>
         </div>
 
-        <div>
-          <h3>Quick Links</h3>
-          <p>Home</p>
-          <p>Tours</p>
-          <p>Services</p>
-          <p>Contact</p>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="home.html">Home</a>
+          <a href="aboutus.html">About Us</a>
+          <a href="Reviews.html">Reviews</a>
+          <a href="contact.html">Contact</a>
         </div>
 
-        <div>
-          <h3>Our Services</h3>
-          <p>Game Drives</p>
-          <p>Boat Cruises</p>
-          <p>Bird Watching</p>
-          <p>Chimp trekking</p>
-          <p>Accommodation</p>
-        </div>
-
-        <div>
-          <h3>Connect With Us</h3>
-          <div class="socials">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-whatsapp"></i>
-          </div>
+        <div class="footer-links">
+          <h4>Explore</h4>
+          <a href="tours.html">Safari Packages</a>
+          <a href="contact.html">Book a Safari</a>
+          <a href="Reviews.html">Guest Experiences</a>
         </div>
       </div>
-      <p class="copyright"></p>© 2026 Queen Trails Safaris | Katunguru, Queen Elizabeth National Park,
-        Uganda</p>
+
+      <div class="footer-bottom">
+        <p>© 2026 Queen Trails Safaris. All rights reserved.</p>
+      </div>
     </footer>
   </body>
 </html>

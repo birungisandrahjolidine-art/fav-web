@@ -5,56 +5,60 @@ const bookingSchema = new mongoose.Schema(
     fullname: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
 
     email: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
 
     phone: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
 
     destination: {
       type: String,
-      required: true
+      required: true,
     },
 
     package: {
       type: String,
-      required: true
+      required: true,
     },
-
+    duration: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     travelDate: {
       type: Date,
-      required: true
+      required: true,
     },
 
     travelers: {
       type: Number,
       required: true,
-      min: 1
+      min: 1,
     },
 
     message: {
       type: String,
-      trim: true
+      trim: true,
     },
 
     status: {
       type: String,
       enum: ["Pending", "Confirmed", "Rejected", "Completed", "Cancelled"],
-      default: "Pending"
-    }
+      default: "Pending",
+    },
   },
   {
-    timestamps: true
-  }
+    timestamps: true,
+  },
 );
 
 module.exports = mongoose.model("Booking", bookingSchema);

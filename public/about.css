@@ -44,6 +44,7 @@ body{
 
 .logo h2 {
     font-size: 20px;
+    color: white;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -311,15 +312,59 @@ h2{
 
 /* Footer */
 
-footer{
-    background:#0f3f25;
-    color:white;
-    text-align:center;
-    padding:25px;
+.footer {
+    background: #0b2d1b;
+    color: white;
+    padding-top: 55px;
 }
 
-footer p{
-    margin:10px 0;
+.footer-container {
+    width: 92%;
+    max-width: 1150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 45px;
+}
+
+.footer-brand h3 {
+    font-size: 17px;
+    margin-bottom: 13px;
+}
+
+.footer-brand p {
+    color: #b8c7bc;
+    max-width: 380px;
+    font-size: 13px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.footer-links h4 {
+    margin-bottom: 7px;
+    color: #e0a525;
+}
+
+.footer-links a {
+    color: #b8c7bc;
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    padding: 20px;
+    color: #8ea196;
+    font-size: 12px;
 }
 
 /* Responsive */
