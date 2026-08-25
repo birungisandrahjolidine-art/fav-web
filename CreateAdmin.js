@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
-const Admin = require("./models/Admin");
+const Admin = require("./models/admin");
 
 const MONGO_URI =
     "mongodb://127.0.0.1:27017/queen_trails_safaris";
@@ -93,6 +93,4 @@ async function createAdmin() {
     }
 
 }
-
-
 createAdmin();
