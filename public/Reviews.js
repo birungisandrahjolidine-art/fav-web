@@ -766,13 +766,6 @@ return `
 
                     </div>
 
-
-                    <span class="verified">
-
-                        ✓ Verified Guest
-
-                    </span>
-
                 </div>
 
             </div>
@@ -788,8 +781,6 @@ return `
 
 
         <div class="review-destination">
-
-            📍
 
             <span>
 
