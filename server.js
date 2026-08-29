@@ -97,8 +97,8 @@ app.get("/", (req, res) => {
 });
 
 // ABOUT
-app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "about.html"));
+app.get(["/about", "/aboutus"], (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "aboutus.html"));
 });
 
 // TOURS
@@ -108,7 +108,7 @@ app.get("/tours", (req, res) => {
 
 // BOOKING
 app.get("/booking", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "booking.html"));
+  res.sendFile(path.join(__dirname, "public", "contact.html"));
 });
 
 // CONTACT
@@ -135,6 +135,11 @@ app.get("/about.html", (req, res) => {
   res.redirect(301, "/about");
 });
 
+// aboutus.html -> /about
+app.get("/aboutus.html", (req, res) => {
+  res.redirect(301, "/about");
+});
+
 // tours.html -> /tours
 app.get("/tours.html", (req, res) => {
   res.redirect(301, "/tours");
@@ -152,6 +157,11 @@ app.get("/contact.html", (req, res) => {
 
 // reviews.html -> /reviews
 app.get("/reviews.html", (req, res) => {
+  res.redirect(301, "/reviews");
+});
+
+// Reviews.html -> /reviews
+app.get("/Reviews.html", (req, res) => {
   res.redirect(301, "/reviews");
 });
 

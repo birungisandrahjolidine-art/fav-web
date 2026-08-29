@@ -121,7 +121,7 @@ loginForm.addEventListener("submit", async (event) => {
 
         setTimeout(() => {
 
-            window.location.href = "/admin.html";
+            window.location.href = "/admin";
 
         }, 800);
 
