@@ -1,412 +1,1253 @@
 <!doctype html>
+
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QUEEN TRAILS SAFARIS</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
+<meta
+name="description"
+content="Queen Trails Safaris offers unforgettable wildlife, cultural and nature adventures across Uganda."
 
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, sans-serif;
-      }
+>
 
-      body {
-        background-color: #f8f8f8;
-        color: #333;
-      }
+  <title>Queen Trails Safaris | Explore Uganda</title>
 
-      a {
-        text-decoration: none;
-      }
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+  >
 
-      header {
-        background: #1b4332;
-        color: white;
-        padding: 15px 8%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+  <style>
 
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-      .logo img {
-        width: 70px;
-        height: auto;
-      }
+    html {
+      scroll-behavior: smooth;
+    }
 
-      .logo h2 {
-        font-size: 20px;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: white;
-      }
+    body {
+      background: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ================================
+       NAVBAR
+    ================================= */
+
+    header {
+      background: #1b4332;
+      color: white;
+      padding: 12px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo img {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+    }
+
+    .logo h2 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: white;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 5px;
+      align-items: center;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      display: block;
+      color: white;
+      padding: 14px 16px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #d4af37;
+    }
+
+    /* ================================
+       DROPDOWN
+    ================================= */
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #0f3f25;
+      min-width: 240px;
+      list-style: none;
+      padding: 8px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+    }
+
+    .dropdown-content li {
+      width: 100%;
+    }
+
+    .dropdown-content li a {
+      padding: 11px 15px;
+      font-size: 14px;
+    }
+
+    .dropdown-content li a:hover {
+      background: #164f31;
+      color: #d4af37;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .nav-caret {
+      margin-left: 5px;
+      font-size: 12px;
+    }
+
+    /* ================================
+       HERO
+    ================================= */
+
+    .hero {
+      min-height: 88vh;
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,0.48),
+          rgba(0,0,0,0.55)
+        ),
+        url("images/chimp.jpeg");
+
+      background-size: cover;
+      background-position: center;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+      color: white;
+
+      padding: 40px 20px;
+    }
+
+    .hero-content {
+      max-width: 900px;
+    }
+
+    .hero-content span {
+      display: inline-block;
+      color: #d4af37;
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    .hero-content h1 {
+      font-size: 58px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 22px;
+      margin-bottom: 35px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #d4af37;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 5px;
+      font-size: 17px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #b38f22;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: #1b4332;
+    }
+
+    /* ================================
+       INTRODUCTION
+    ================================= */
+
+    .intro {
+      padding: 80px 8%;
+      text-align: center;
+      background: white;
+    }
+
+    .section-label {
+      color: #d4af37;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 14px;
+    }
+
+    .intro h2 {
+      color: #1b4332;
+      font-size: 40px;
+      margin: 12px 0 20px;
+    }
+
+    .intro p {
+      max-width: 800px;
+      margin: auto;
+      color: #666;
+      font-size: 17px;
+    }
+
+    /* ================================
+       FEATURED TOURS
+    ================================= */
+
+    .tours {
+      padding: 80px 8%;
+      text-align: center;
+    }
+
+    .tours h2 {
+      color: #1b4332;
+      font-size: 40px;
+      margin: 12px 0 40px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.1);
+      transition: 0.4s;
+      text-align: left;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 22px;
+    }
+
+    .card-content h3 {
+      color: #1b4332;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .card-content p {
+      color: #666;
+      margin-bottom: 18px;
+    }
+
+    .card-link {
+      color: #d4af37;
+      font-weight: bold;
+    }
+
+    /* ================================
+       WHY CHOOSE US
+    ================================= */
+
+    .why-us {
+      background: #1b4332;
+      color: white;
+      padding: 80px 8%;
+      text-align: center;
+    }
+
+    .why-us h2 {
+      font-size: 40px;
+      margin: 12px 0 45px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .feature {
+      padding: 25px;
+    }
+
+    .feature i {
+      font-size: 40px;
+      color: #d4af37;
+      margin-bottom: 18px;
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #c8d5cd;
+      font-size: 14px;
+    }
+
+    /* ================================
+       DESTINATIONS
+    ================================= */
+
+    .destinations {
+      padding: 80px 8%;
+      text-align: center;
+      background: white;
+    }
+
+    .destinations h2 {
+      color: #1b4332;
+      font-size: 40px;
+      margin: 12px 0 40px;
+    }
+
+    .destination-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .destination {
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .destination img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .destination:hover img {
+      transform: scale(1.08);
+    }
+
+    .destination-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        transparent,
+        rgba(0,0,0,0.8)
+      );
+
+      display: flex;
+      align-items: flex-end;
+      padding: 25px;
+      color: white;
+    }
+
+    .destination-overlay h3 {
+      font-size: 21px;
+    }
+
+    /* ================================
+       CTA
+    ================================= */
+
+    .cta {
+      padding: 90px 8%;
+      text-align: center;
+      color: white;
+
+      background:
+        linear-gradient(
+          rgba(15,63,37,0.88),
+          rgba(15,63,37,0.88)
+        ),
+        url("images/park.jpeg");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .cta h2 {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    .footer {
+      background: #0b2d1b;
+      color: white;
+      padding-top: 55px;
+    }
+
+    .footer-container {
+      width: 90%;
+      max-width: 1150px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+
+      gap: 50px;
+      padding-bottom: 45px;
+    }
+
+    .footer-brand h3 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .footer-brand p {
+      color: #b8c7bc;
+      max-width: 380px;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links h4 {
+      color: #e0a525;
+      margin-bottom: 8px;
+    }
+
+    .footer-links a {
+      color: #b8c7bc;
+      font-size: 14px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .socials {
+      margin-top: 20px;
+    }
+
+    .socials a {
+      color: #b8c7bc;
+      font-size: 20px;
+      margin-right: 15px;
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      color: #d4af37;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      padding: 20px;
+      color: #8ea196;
+      font-size: 12px;
+    }
+
+    /* ================================
+       RESPONSIVE
+    ================================= */
+
+    @media (max-width: 1000px) {
 
       nav ul {
-        display: flex;
-        list-style: none;
-        gap: 12px;
-        align-items: center;
-      }
-
-      nav ul li {
-        position: relative;
+        gap: 0;
       }
 
       nav ul li a {
-        display: block;
-        color: white;
-        padding: 15px 20px;
-        font-size: 18px;
-      }
-
-      nav ul li a:hover,
-      nav ul li a.active {
-        color: #d4af37;
-      }
-
-      /* Hero Section */
-      .hero {
-        background:
-          linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-          url("images/chimp.jpeg") no-repeat center center;
-        background-size: cover;
-        background-position: center;
-        height: 90vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        color: white;
-      }
-
-      .hero-content h1 {
-        font-size: 60px;
-        margin-bottom: 20px;
-      }
-
-      .hero-content p {
-        font-size: 22px;
-        margin-bottom: 30px;
-      }
-
-      .btn {
-        display: inline-block;
-        background: #d4af37;
-        color: white;
-        padding: 15px 30px;
-        text-decoration: none;
-        border-radius: 5px;
-        font-size: 18px;
-      }
-
-      .btn:hover {
-        background: #b38f22;
-      }
-
-      /* Featured Tours */
-      .tours {
-        padding: 80px 8%;
-        text-align: center;
-      }
-
-      .tours h2 {
-        color: #1b4332;
-        margin-bottom: 40px;
-        font-size: 40px;
-      }
-
-      .cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 25px;
-      }
-
-      .card {
-        background: white;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .card img {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-      }
-
-      .card-content {
-        padding: 20px;
-      }
-
-      .card-content h3 {
-        color: #1b4332;
-        margin-bottom: 10px;
-      }
-
-      /* About */
-      .about {
-        background: #fff;
-        padding: 80px 8%;
-        text-align: center;
-      }
-
-      .about h2 {
-        color: #1b4332;
-        margin-bottom: 20px;
-        font-size: 40px;
-      }
-
-      .about p {
-        max-width: 800px;
-        margin: auto;
-        line-height: 1.8;
-        font-size: 18px;
-      }
-
-      .footer {
-        background: #0b2d1b;
-        color: white;
-        padding-top: 55px;
-      }
-
-      .footer-container {
-        width: 92%;
-        max-width: 1150px;
-        margin: auto;
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
-        gap: 50px;
-        padding-bottom: 45px;
-      }
-
-      .footer-brand h3 {
-        font-size: 17px;
-        margin-bottom: 13px;
-        color: white;
-      }
-
-      .footer-brand p {
-        color: #b8c7bc;
-        max-width: 380px;
-        font-size: 13px;
-      }
-
-      .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 9px;
-      }
-
-      .footer-links h4 {
-        margin-bottom: 7px;
-        color: #e0a525;
-      }
-
-      .footer-links a {
-        color: #b8c7bc;
-        font-size: 13px;
-        text-decoration: none;
-      }
-
-      .footer-links a:hover {
-        color: white;
-      }
-
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        text-align: center;
-        padding: 20px;
-        color: #8ea196;
-        font-size: 12px;
-      }
-      /* Dropdown Menu */
-      nav ul li {
-        position: relative;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background: #0f3f25;
-        min-width: 220px;
-        list-style: none;
-        padding: 0;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-      }
-
-      .dropdown-content li {
-        margin: 0;
-      }
-
-      .dropdown > a {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-
-      .nav-caret {
-        display: inline-block;
-        font-size: 0.9em;
-        transition: transform 0.2s ease;
-      }
-
-      .dropdown:hover .nav-caret {
-        transform: rotate(180deg);
-      }
-
-      .dropdown-content li a {
-        color: white;
-        padding: 12px 15px;
-        display: block;
-        text-decoration: none;
+        padding: 12px 9px;
         font-size: 14px;
       }
 
-      .dropdown-content li a:hover {
-        background: #164f31;
-        color: #d4af37;
+      .hero-content h1 {
+        font-size: 45px;
       }
 
-      /* Show dropdown on hover */
-      .dropdown:hover .dropdown-content {
-        display: block;
+      .cards,
+      .destination-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
-    </style>
-  </head>
-  <body>
-    <!-- Header -->
-    <header>
-      <div class="logo">
-        <img src="images/logo.png" alt="Queen Trails Safaris logo" />
-        <h2>QUEEN TRAILS SAFARIS</h2>
-      </div>
 
-      <nav>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li class="dropdown">
-            <a href="#">Services <span class="nav-caret">▾</span></a>
-            <ul class="dropdown-content">
-              <li><a href="#">Game Drives</a></li>
-              <li><a href="#">LuxuryBoat Cruises</a></li>
-              <li><a href="#">Bird Watching</a></li>
-              <li><a href="#">Nature Walks</a></li>
-              <li><a href="#">Chimpanzee Tracking</a></li>
-              <li><a href="#">Cultural Tours</a></li>
-              <li><a href="#">Accommodation Booking</a></li>
-              <li><a href="#">Spot Fishing Services</a></li>
-              <li><a href="#">Car and Motorcycle Rentals</a></li>
-            </ul>
-          </li>
-          <li><a href="aboutus">About us</a></li>
-          <li><a href="tours">Tours</a></li>
-          <li class="dropdown">
-            <a href="#">Destinations <span class="nav-caret">▾</span></a>
-            <ul class="dropdown-content">
-              <li><a href="#">Queen Elizabeth National Park</a></li>
-              <li><a href="#">Tree climbing Lions in Ishasha </a></li>
-              <li><a href="#">Kibale Forest</a></li>
-              <li><a href="#">Bwindi Impenetrable Forest</a></li>
-              <li><a href="#">Murchison Falls</a></li>
-              <li><a href="#">Lake Mburo National Park</a></li>
-              <li><a href="#">Mgahinga Gorilla Park</a></li>
-              <li><a href="#">L.Bunyonyi</a></li>
-              <li><a href="#">Siipi Falls</a></li>
-            </ul>
-          </li>
-          <li><a href="contact">Contact</a></li>
-          <li><a href="Reviews">Reviews</a></li> 
-        </ul>
-      </nav>
-    </header>
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1>Explore the Wild, Create Lasting Memories</h1>
-        <p>Discover unforgettable safari adventures in Uganda</p>
+    @media (max-width: 700px) {
 
-        <a href="contact" class="btn">Book Your Safari</a>
-      </div>
-    </section>
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
 
-    <!-- Featured Tours -->
-    <section class="tours">
-      <h2>Featured Tours</h2>
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-      <div class="cards">
-        <div class="card">
-          <img src="images/lions.jpeg" alt="Lions" />
-          <div class="card-content">
-            <h3>Game Drives</h3>
-            <p>Encounter lions, elephants, buffaloes, and other wildlife.</p>
-          </div>
-        </div>
+      .hero {
+        min-height: 75vh;
+      }
 
-        <div class="card">
-          <img src="images/boat cruise.jpeg" alt="Boat Cruise" />
-          <div class="card-content">
-            <h3>Kazinga Channel Cruise</h3>
-            <p>Enjoy spectacular views and abundant aquatic wildlife.</p>
-          </div>
-        </div>
+      .hero-content h1 {
+        font-size: 36px;
+      }
 
-        <div class="card">
-          <img src="images/chimp.jpeg" alt="Chimpanzee Tracking" />
-          <div class="card-content">
-            <h3>Chimpanzee Tracking</h3>
-            <p>Experience an exciting adventure in Kyambura Gorge.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      .hero-content p {
+        font-size: 18px;
+      }
 
-    
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-brand">
-          <h3>🌿 QUEEN TRAILS SAFARIS</h3>
-          <p>Discover Uganda. Experience the wild. Create unforgettable memories.</p>
-        </div>
+      .intro h2,
+      .tours h2,
+      .why-us h2,
+      .destinations h2,
+      .cta h2 {
+        font-size: 30px;
+      }
 
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <a href="home.html">Home</a>
-          <a href="aboutus.html">About Us</a>
-          <a href="Reviews.html">Reviews</a>
-          <a href="contact.html">Contact</a>
-        </div>
+      .cards,
+      .destination-grid,
+      .features,
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
 
-        <div class="footer-links">
-          <h4>Explore</h4>
-          <a href="tours.html">Safari Packages</a>
-          <a href="contact.html">Book a Safari</a>
-          <a href="Reviews.html">Guest Experiences</a>
-        </div>
-      </div>
+      .footer-container {
+        gap: 30px;
+      }
 
-      <div class="footer-bottom">
-        <p>© 2026 Queen Trails Safaris. All rights reserved.</p>
-      </div>
-    </footer>
-  </body>
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<!-- ==================================================
+     NAVIGATION
+================================================== -->
+
+<header>
+
+  <div class="logo">
+
+```
+<img
+  src="images/logo.png"
+  alt="Queen Trails Safaris logo"
+>
+
+<h2>QUEEN TRAILS SAFARIS</h2>
+```
+
+  </div>
+
+  <nav>
+
+```
+<ul>
+
+  <li>
+    <a href="home" class="active">
+      Home
+    </a>
+  </li>
+
+  <li>
+    <a href="about">
+      About Us
+    </a>
+  </li>
+
+  <li>
+    <a href="tours">
+      Tours
+    </a>
+  </li>
+
+  <li class="dropdown">
+
+    <a href="services">
+      Services
+      <span class="nav-caret">▾</span>
+    </a>
+
+    <ul class="dropdown-content">
+
+      <li>
+        <a href="services">
+          Game Drives
+        </a>
+      </li>
+
+      <li>
+        <a href="services">
+          Boat Cruises
+        </a>
+      </li>
+
+      <li>
+        <a href="services">
+          Bird Watching
+        </a>
+      </li>
+
+      <li>
+        <a href="services">
+          Nature Walks
+        </a>
+      </li>
+
+      <li>
+        <a href="services">
+          Chimpanzee Tracking
+        </a>
+      </li>
+
+      <li>
+        <a href="services">
+          Cultural Tours
+        </a>
+      </li>
+
+      <li>
+        <a href="services">
+          Accommodation Booking
+        </a>
+      </li>
+
+      <li>
+        <a href="services">
+          Fishing Services
+        </a>
+      </li>
+
+      <li>
+        <a href="services">
+          Car & Motorcycle Rentals
+        </a>
+      </li>
+
+    </ul>
+
+  </li>
+
+  <li class="dropdown">
+
+    <a href="#">
+      Destinations
+      <span class="nav-caret">▾</span>
+    </a>
+
+    <ul class="dropdown-content">
+
+      <li>
+        <a href="#">
+          Queen Elizabeth National Park
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          Ishasha Tree-Climbing Lions
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          Kibale Forest
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          Bwindi Impenetrable Forest
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          Murchison Falls
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          Lake Mburo
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          Mgahinga Gorilla Park
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          Lake Bunyonyi
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          Sipi Falls
+        </a>
+      </li>
+
+    </ul>
+
+  </li>
+
+  <li>
+    <a href="Review">
+      Reviews
+    </a>
+  </li>
+
+  <li>
+    <a href="contact">
+      Contact
+    </a>
+  </li>
+
+</ul>
+```
+
+  </nav>
+
+</header>
+
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+```
+<span>
+  WELCOME TO UGANDA
+</span>
+
+<h1>
+  Explore the Wild,
+  Create Lasting Memories
+</h1>
+
+<p>
+  Discover unforgettable safari adventures,
+  breathtaking landscapes and incredible wildlife
+  with Queen Trails Safaris.
+</p>
+
+<div class="hero-buttons">
+
+  <a href="contact" class="btn">
+    Book Your Safari
+  </a>
+
+  <a href="tours" class="btn btn-outline">
+    Explore Tours
+  </a>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- ==================================================
+     INTRODUCTION
+================================================== -->
+
+<section class="intro">
+
+  <span class="section-label">
+    EXPERIENCE UGANDA
+  </span>
+
+  <h2>
+    Adventure Begins With Queen Trails
+  </h2>
+
+  <p>
+    From the breathtaking wilderness of Queen Elizabeth National
+    Park to Uganda's beautiful forests, lakes and mountains,
+    we create memorable safari experiences designed around you.
+  </p>
+
+</section>
+
+<!-- ==================================================
+     FEATURED TOURS
+================================================== -->
+
+<section class="tours">
+
+  <span class="section-label">
+    OUR EXPERIENCES
+  </span>
+
+  <h2>
+    Featured Tours
+  </h2>
+
+  <div class="cards">
+
+```
+<div class="card">
+
+  <img
+    src="images/lions.jpeg"
+    alt="Lions on safari"
+  >
+
+  <div class="card-content">
+
+    <h3>
+      Game Drives
+    </h3>
+
+    <p>
+      Encounter lions, elephants, buffaloes,
+      antelopes and other incredible wildlife.
+    </p>
+
+    <a href="tours" class="card-link">
+      Explore Tour →
+    </a>
+
+  </div>
+
+</div>
+
+
+<div class="card">
+
+  <img
+    src="images/boat cruise.jpeg"
+    alt="Kazinga Channel boat cruise"
+  >
+
+  <div class="card-content">
+
+    <h3>
+      Kazinga Channel Cruise
+    </h3>
+
+    <p>
+      Enjoy spectacular views and encounter
+      hippos, crocodiles, elephants and birds.
+    </p>
+
+    <a href="tours" class="card-link">
+      Explore Tour →
+    </a>
+
+  </div>
+
+</div>
+
+
+<div class="card">
+
+  <img
+    src="images/chimp.jpeg"
+    alt="Chimpanzee tracking"
+  >
+
+  <div class="card-content">
+
+    <h3>
+      Chimpanzee Tracking
+    </h3>
+
+    <p>
+      Experience an exciting primate adventure
+      through Uganda's beautiful forests.
+    </p>
+
+    <a href="tours" class="card-link">
+      Explore Tour →
+    </a>
+
+  </div>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- ==================================================
+     WHY CHOOSE US
+================================================== -->
+
+<section class="why-us">
+
+  <span class="section-label">
+    WHY TRAVEL WITH US
+  </span>
+
+  <h2>
+    Why Choose Queen Trails Safaris?
+  </h2>
+
+  <div class="features">
+
+```
+<div class="feature">
+
+  <i class="fa-solid fa-binoculars"></i>
+
+  <h3>
+    Unforgettable Adventures
+  </h3>
+
+  <p>
+    Experience Uganda's wildlife,
+    landscapes and culture with carefully
+    planned safari adventures.
+  </p>
+
+</div>
+
+
+<div class="feature">
+
+  <i class="fa-solid fa-user-tie"></i>
+
+  <h3>
+    Experienced Guides
+  </h3>
+
+  <p>
+    Travel with knowledgeable guides
+    who understand Uganda's wildlife
+    and destinations.
+  </p>
+
+</div>
+
+
+<div class="feature">
+
+  <i class="fa-solid fa-heart"></i>
+
+  <h3>
+    Personalized Experiences
+  </h3>
+
+  <p>
+    We help create safari experiences
+    that match your interests,
+    schedule and budget.
+  </p>
+
+</div>
+
+
+<div class="feature">
+
+  <i class="fa-solid fa-earth-africa"></i>
+
+  <h3>
+    Discover Uganda
+  </h3>
+
+  <p>
+    Explore the beauty of Uganda
+    while creating memories that
+    last a lifetime.
+  </p>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- ==================================================
+     DESTINATIONS
+================================================== -->
+
+<section class="destinations">
+
+  <span class="section-label">
+    DISCOVER UGANDA
+  </span>
+
+  <h2>
+    Popular Destinations
+  </h2>
+
+  <div class="destination-grid">
+
+```
+<div class="destination">
+
+  <img
+    src="images/park.jpeg"
+    alt="Queen Elizabeth National Park"
+  >
+
+  <div class="destination-overlay">
+
+    <h3>
+      Queen Elizabeth National Park
+    </h3>
+
+  </div>
+
+</div>
+
+
+<div class="destination">
+
+  <img
+    src="images/chimp.jpeg"
+    alt="Kibale Forest"
+  >
+
+  <div class="destination-overlay">
+
+    <h3>
+      Kibale Forest
+    </h3>
+
+  </div>
+
+</div>
+
+
+<div class="destination">
+
+  <img
+    src="images/treec.jpeg"
+    alt="Ishasha tree climbing lions"
+  >
+
+  <div class="destination-overlay">
+
+    <h3>
+      Ishasha
+    </h3>
+
+  </div>
+
+</div>
+```
+
+  </div>
+
+</section>
+
+<!-- ==================================================
+     CALL TO ACTION
+================================================== -->
+
+<section class="cta">
+
+  <h2>
+    Ready for Your Next Adventure?
+  </h2>
+
+  <p>
+    Let Queen Trails Safaris help you discover
+    the beauty and wild heart of Uganda.
+  </p>
+
+  <a href="contact" class="btn">
+    Plan Your Safari
+  </a>
+
+</section>
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+```
+<div class="footer-brand">
+
+  <h3>
+    🌿 QUEEN TRAILS SAFARIS
+  </h3>
+
+  <p>
+    Discover Uganda. Experience the wild.
+    Create unforgettable memories.
+  </p>
+
+  <div class="socials">
+
+    <a href="#">
+      <i class="fab fa-facebook"></i>
+    </a>
+
+    <a href="#">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="#">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+  </div>
+
+</div>
+
+
+<div class="footer-links">
+
+  <h4>
+    Quick Links
+  </h4>
+
+  <a href="home">
+    Home
+  </a>
+
+  <a href="aboutus">
+    About Us
+  </a>
+
+  <a href="tours">
+    Tours
+  </a>
+
+  <a href="Reviews">
+    Reviews
+  </a>
+
+  <a href="contact">
+    Contact
+  </a>
+
+</div>
+
+
+<div class="footer-links">
+
+  <h4>
+    Explore
+  </h4>
+
+  <a href="tours">
+    Safari Packages
+  </a>
+
+  <a href="contact">
+    Book a Safari
+  </a>
+
+  <a href="Reviews">
+    Guest Experiences
+  </a>
+
+  <a href="services">
+    Our Services
+  </a>
+
+</div>
+```
+
+  </div>
+
+  <div class="footer-bottom">
+
+```
+<p>
+  © 2026 Queen Trails Safaris.
+  All rights reserved.
+</p>
+```
+
+  </div>
+
+</footer>
+
+</body>
 </html>

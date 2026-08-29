@@ -3,10 +3,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
 
+```
+<meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <meta
     name="description"
@@ -15,8 +19,8 @@
 
 <title>Guest Reviews | Queen Trails Safaris</title>
 
-<link rel="stylesheet" href="reviews.css">
-
+<link rel="stylesheet" href="/reviews.css">
+```
 
 </head>
 
@@ -28,72 +32,160 @@
 
 <header class="navbar">
 
-    <div class="nav-container">
+```
+<div class="nav-container">
 
-        <a href="home" class="logo">
-            <img src="images/logo.png" alt="Queen Trails Safaris logo" class="logo-image" />
-            <span>
-                <strong>QUEEN TRAILS</strong>
-                <small>SAFARIS</small>
-            </span>
+    <!-- HOME -->
+    <a href="/" class="logo">
+
+        <img
+            src="/images/logo.png"
+            alt="Queen Trails Safaris logo"
+            class="logo-image"
+        >
+
+        <span>
+            <strong>QUEEN TRAILS</strong>
+            <small>SAFARIS</small>
+        </span>
+
+    </a>
+
+
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Open navigation menu"
+    >
+        ☰
+    </button>
+
+
+    <nav id="mainNav">
+
+        <!-- CLEAN URLS -->
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/about">
+            About Us
+        </a>
+
+        <a href="/tours">
+            Tours
         </a>
 
 
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            aria-label="Open navigation menu"
-        >
-            ☰
-        </button>
+        <!-- DESTINATIONS -->
 
-
-        <nav id="mainNav">
-
-            <a href="home">Home</a>
-
-            <a href="aboutus">About Us</a>
-            <a href="tours">Tours</a>
-
-            <div class="nav-dropdown">
-                <a href="destinations.html" class="dropbtn">Destinations <span class="nav-caret">▾</span></a>
-                <div class="dropdown-menu">
-                    <a href="destinations.html#queen-elizabeth">Queen Elizabeth National Park</a>
-                    <a href="destinations.html#kibale">Kibale Forest</a>
-                    <a href="destinations.html#bwindi">Bwindi Impenetrable Forest</a>
-                    <a href="destinations.html#murchison">Murchison Falls</a>
-                    <a href="destinations.html#lake-mburo">Lake Mburo</a>
-                    <a href="destinations.html#mgahinga">Mgahinga Gorilla Park</a>
-                </div>
-            </div>
-
-            <div class="nav-dropdown">
-                <a href="services.html" class="dropbtn">Services <span class="nav-caret">▾</span></a>
-                <div class="dropdown-menu">
-                    <a href="tours.html#wildlife">Wildlife Safari</a>
-                    <a href="tours.html#gorilla">Gorilla Trekking</a>
-                    <a href="tours.html#chimpanzee">Chimpanzee Tracking</a>
-                    <a href="tours.html#cultural">Cultural Tour</a>
-                    <a href="tours.html#boat">Boat Cruise</a>
-                    <a href="tours.html#nature">Nature Walk</a>
-                </div>
-            </div>
+        <div class="nav-dropdown">
 
             <a
-                href="reviews.html"
-                class="active"
+                href="/tours"
+                class="dropbtn"
             >
-                Reviews
+                Destinations
+                <span class="nav-caret">▾</span>
             </a>
 
-            <a href="contact">Contact</a>
+            <div class="dropdown-menu">
 
-        </nav>
+                <a href="/tours#queen-elizabeth">
+                    Queen Elizabeth National Park
+                </a>
 
-    </div>
+                <a href="/tours#kibale">
+                    Kibale Forest
+                </a>
+
+                <a href="/tours#bwindi">
+                    Bwindi Impenetrable Forest
+                </a>
+
+                <a href="/tours#murchison">
+                    Murchison Falls
+                </a>
+
+                <a href="/tours#lake-mburo">
+                    Lake Mburo
+                </a>
+
+                <a href="/tours#mgahinga">
+                    Mgahinga Gorilla Park
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SERVICES -->
+
+        <div class="nav-dropdown">
+
+            <a
+                href="/tours"
+                class="dropbtn"
+            >
+                Services
+                <span class="nav-caret">▾</span>
+            </a>
+
+            <div class="dropdown-menu">
+
+                <a href="/tours#wildlife">
+                    Wildlife Safari
+                </a>
+
+                <a href="/tours#gorilla">
+                    Gorilla Trekking
+                </a>
+
+                <a href="/tours#chimpanzee">
+                    Chimpanzee Tracking
+                </a>
+
+                <a href="/tours#cultural">
+                    Cultural Tour
+                </a>
+
+                <a href="/tours#boat">
+                    Boat Cruise
+                </a>
+
+                <a href="/tours#nature">
+                    Nature Walk
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- REVIEWS -->
+
+        <a
+            href="/reviews"
+            class="active"
+        >
+            Reviews
+        </a>
+
+
+        <!-- CONTACT -->
+
+        <a href="/contact">
+            Contact
+        </a>
+
+    </nav>
+
+</div>
+```
 
 </header>
-
 
 <!-- ==================================================
      HERO
@@ -101,29 +193,30 @@
 
 <section class="reviews-hero">
 
-    <div class="hero-overlay">
+```
+<div class="hero-overlay">
 
-        <div class="hero-content">
+    <div class="hero-content">
 
-            <span class="hero-label">
-                OUR GUESTS
-            </span>
+        <span class="hero-label">
+            OUR GUESTS
+        </span>
 
-            <h1>
-                What Our Guests Say
-            </h1>
+        <h1>
+            What Our Guests Say
+        </h1>
 
-            <p>
-                Discover real experiences from travelers
-                who explored the beauty of Uganda with us.
-            </p>
-
-        </div>
+        <p>
+            Discover real experiences from travelers
+            who explored the beauty of Uganda with us.
+        </p>
 
     </div>
 
-</section>
+</div>
+```
 
+</section>
 
 <!-- ==================================================
      RATING SUMMARY
@@ -131,66 +224,70 @@
 
 <section class="rating-summary-section">
 
-    <div class="rating-summary">
+```
+<div class="rating-summary">
 
-        <div class="rating-main">
 
-            <span
-                id="averageRating"
-                class="average-rating"
-            >
-                0.0
-            </span>
+    <div class="rating-main">
 
-            <div class="summary-stars">
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-                <span>★</span>
-            </div>
+        <span
+            id="averageRating"
+            class="average-rating"
+        >
+            0.0
+        </span>
 
-            <p>
-                Average Guest Rating
-            </p>
+        <div class="summary-stars">
+
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
+            <span>★</span>
 
         </div>
 
-
-        <div class="summary-divider"></div>
-
-
-        <div class="rating-total">
-
-            <strong id="totalPublicReviews">
-                0
-            </strong>
-
-            <span>
-                Guest Reviews
-            </span>
-
-        </div>
-
-
-        <div class="summary-divider"></div>
-
-
-        <div class="rating-message">
-
-            <span>🌍</span>
-
-            <p>
-                Every journey creates a story.
-                Thank you for sharing yours.
-            </p>
-
-        </div>
+        <p>
+            Average Guest Rating
+        </p>
 
     </div>
 
-</section>
 
+    <div class="summary-divider"></div>
+
+
+    <div class="rating-total">
+
+        <strong id="totalPublicReviews">
+            0
+        </strong>
+
+        <span>
+            Guest Reviews
+        </span>
+
+    </div>
+
+
+    <div class="summary-divider"></div>
+
+
+    <div class="rating-message">
+
+        <span>🌍</span>
+
+        <p>
+            Every journey creates a story.
+            Thank you for sharing yours.
+        </p>
+
+    </div>
+
+</div>
+```
+
+</section>
 
 <!-- ==================================================
      REVIEWS CONTENT
@@ -198,125 +295,126 @@
 
 <main class="reviews-main">
 
-    <div class="reviews-header">
+```
+<div class="reviews-header">
 
-        <div>
+    <div>
 
-            <span class="section-label">
-                TRAVELER EXPERIENCES
-            </span>
+        <span class="section-label">
+            TRAVELER EXPERIENCES
+        </span>
 
-            <h2>
-                Stories From Our Guests
-            </h2>
+        <h2>
+            Stories From Our Guests
+        </h2>
 
-            <p>
-                See what travelers are saying about
-                their Queen Trails Safaris adventures.
-            </p>
-
-        </div>
-
-
-        <button
-            class="share-review-btn"
-            id="openReviewBtn"
-        >
-            ★ Share Your Experience
-        </button>
+        <p>
+            See what travelers are saying about
+            their Queen Trails Safaris adventures.
+        </p>
 
     </div>
 
 
-    <!-- ==================================================
-         FILTERS
-    ================================================== -->
-
-    <div class="review-filters">
-
-        <button
-            class="filter-btn active"
-            data-filter="all"
-        >
-            All Reviews
-        </button>
-
-        <button
-            class="filter-btn"
-            data-filter="5"
-        >
-            ★ 5
-        </button>
-
-        <button
-            class="filter-btn"
-            data-filter="4"
-        >
-            ★ 4
-        </button>
-
-        <button
-            class="filter-btn"
-            data-filter="3"
-        >
-            ★ 3
-        </button>
-
-        <button
-            class="filter-btn"
-            data-filter="2"
-        >
-            ★ 2
-        </button>
-
-        <button
-            class="filter-btn"
-            data-filter="1"
-        >
-            ★ 1
-        </button>
-
-    </div>
-
-
-    <!-- ==================================================
-         REVIEWS
-    ================================================== -->
-
-    <div
-        id="approvedReviews"
-        class="reviews-grid"
+    <button
+        class="share-review-btn"
+        id="openReviewBtn"
     >
+        ★ Share Your Experience
+    </button>
 
-        <div class="loading-box">
-
-            <div class="loading-spinner"></div>
-
-            <p>
-                Loading guest reviews...
-            </p>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <div
-        id="loadMoreContainer"
-        class="load-more-container"
+<!-- ==================================================
+     FILTERS
+================================================== -->
+
+<div class="review-filters">
+
+    <button
+        class="filter-btn active"
+        data-filter="all"
     >
+        All Reviews
+    </button>
 
-        <button
-            id="loadMoreBtn"
-            class="load-more-btn"
-        >
-            Load More Reviews
-        </button>
+    <button
+        class="filter-btn"
+        data-filter="5"
+    >
+        ★ 5
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="4"
+    >
+        ★ 4
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="3"
+    >
+        ★ 3
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="2"
+    >
+        ★ 2
+    </button>
+
+    <button
+        class="filter-btn"
+        data-filter="1"
+    >
+        ★ 1
+    </button>
+
+</div>
+
+
+<!-- ==================================================
+     REVIEWS
+================================================== -->
+
+<div
+    id="approvedReviews"
+    class="reviews-grid"
+>
+
+    <div class="loading-box">
+
+        <div class="loading-spinner"></div>
+
+        <p>
+            Loading guest reviews...
+        </p>
 
     </div>
+
+</div>
+
+
+<div
+    id="loadMoreContainer"
+    class="load-more-container"
+>
+
+    <button
+        id="loadMoreBtn"
+        class="load-more-btn"
+    >
+        Load More Reviews
+    </button>
+
+</div>
+```
 
 </main>
-
 
 <!-- ==================================================
      SHARE REVIEW MODAL
@@ -327,230 +425,257 @@
     class="modal"
 >
 
-    <div class="modal-content">
-
-        <button
-            id="closeModalBtn"
-            class="close-modal"
-            aria-label="Close review form"
-        >
-            ×
-        </button>
+```
+<div class="modal-content">
 
 
-        <div class="modal-header">
+    <button
+        id="closeModalBtn"
+        class="close-modal"
+        aria-label="Close review form"
+    >
+        ×
+    </button>
 
-            <span class="modal-icon">
-                ⭐
-            </span>
 
-            <h2>
-                Share Your Experience
-            </h2>
+    <div class="modal-header">
 
-            <p>
-                Tell future travelers about your journey
-                with Queen Trails Safaris.
+        <span class="modal-icon">
+            ⭐
+        </span>
+
+        <h2>
+            Share Your Experience
+        </h2>
+
+        <p>
+            Tell future travelers about your journey
+            with Queen Trails Safaris.
+        </p>
+
+    </div>
+
+
+    <!-- REVIEW FORM -->
+
+    <form id="reviewForm">
+
+
+        <div class="form-row">
+
+
+            <div class="form-group">
+
+                <label for="clientName">
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="clientName"
+                    name="clientName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+
+            <div class="form-group">
+
+                <label for="destination">
+                    Destination
+                </label>
+
+                <select
+                    id="destination"
+                    name="destination"
+                    required
+                >
+
+                    <option value="">
+                        Select destination
+                    </option>
+
+                    <option value="Queen Elizabeth National Park">
+                        Queen Elizabeth National Park
+                    </option>
+
+                    <option value="Kibale Forest">
+                        Kibale Forest
+                    </option>
+
+                    <option value="Bwindi Impenetrable Forest">
+                        Bwindi Impenetrable Forest
+                    </option>
+
+                    <option value="Murchison Falls">
+                        Murchison Falls
+                    </option>
+
+                    <option value="Lake Mburo">
+                        Lake Mburo
+                    </option>
+
+                    <option value="Mgahinga Gorilla Park">
+                        Mgahinga Gorilla Park
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="tour">
+                    Services
+                </label>
+
+                <select
+                    id="tour"
+                    name="tour"
+                    required
+                >
+
+                    <option value="">
+                        Select tour
+                    </option>
+
+                    <option value="Wildlife Safari">
+                        Wildlife Safari
+                    </option>
+
+                    <option value="Gorilla Trekking">
+                        Gorilla Trekking
+                    </option>
+
+                    <option value="Chimpanzee Tracking">
+                        Chimpanzee Tracking
+                    </option>
+
+                    <option value="Cultural Tour">
+                        Cultural Tour
+                    </option>
+
+                    <option value="Boat Cruise">
+                        Boat Cruise
+                    </option>
+
+                    <option value="Nature Walk">
+                        Nature Walk
+                    </option>
+
+                    <option value="Mountain Climbing">
+                        Mountain Climbing
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <!-- STAR RATING -->
+
+        <div class="form-group">
+
+            <label>
+                Your Rating
+            </label>
+
+            <div
+                class="stars"
+                id="stars"
+            >
+
+                <span data-rating="1">★</span>
+                <span data-rating="2">★</span>
+                <span data-rating="3">★</span>
+                <span data-rating="4">★</span>
+                <span data-rating="5">★</span>
+
+            </div>
+
+
+            <input
+                type="hidden"
+                id="rating"
+                name="rating"
+            >
+
+
+            <p
+                id="ratingText"
+                class="rating-text"
+            >
+                Select your rating
             </p>
 
         </div>
 
 
-        <!-- REVIEW FORM -->
+        <!-- EXPERIENCE -->
 
-        <form id="reviewForm">
+        <div class="form-group">
 
-            <div class="form-row">
+            <label for="reviewMessage">
+                Your Experience
+            </label>
 
-                <div class="form-group">
+            <textarea
+                id="reviewMessage"
+                name="reviewMessage"
+                rows="6"
+                placeholder="Tell us about your trip..."
+                required
+            ></textarea>
 
-                    <label for="clientName">
-                        Your Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="clientName"
-                        name="clientName"
-                        placeholder="Enter your name"
-                        required
-                    >
-
-                </div>
+        </div>
 
 
-                <div class="form-group">
-
-                    <label for="email">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email"
-                        required
-                    >
-
-                </div>
-
-            </div>
+        <button
+            type="submit"
+            class="submit-review-btn"
+        >
+            Submit Review
+        </button>
 
 
-            <div class="form-row">
+        <div
+            id="message"
+            class="form-message"
+        ></div>
 
-                <div class="form-group">
-
-                    <label for="destination">
-                        Destination
-                    </label>
-
-                    <select
-                        id="destination"
-                        name="destination"
-                        required
-                    >
-                        <option value="">
-                            Select destination
-                        </option>
-                        <option value="Queen Elizabeth National Park">
-                            Queen Elizabeth National Park
-                        </option>
-                        <option value="Kibale Forest">
-                            Kibale Forest
-                        </option>
-                        <option value="Bwindi Impenetrable Forest">
-                            Bwindi Impenetrable Forest
-                        </option>
-                        <option value="Murchison Falls">
-                            Murchison Falls
-                        </option>
-                        <option value="Lake Mburo">
-                            Lake Mburo
-                        </option>
-                        <option value="Mgahinga Gorilla Park">
-                            Mgahinga Gorilla Park
-                        </option>
-                    </select>
-
-                </div>
-
-                <div class="form-group">
-
-                    <label for="tour">
-                        Services
-                    </label>
-
-                    <select
-                        id="tour"
-                        name="tour"
-                        required
-                    >
-                        <option value="">
-                            Select tour
-                        </option>
-                        <option value="Wildlife Safari">
-                            Wildlife Safari
-                        </option>
-                        <option value="Gorilla Trekking">
-                            Gorilla Trekking
-                        </option>
-                        <option value="Chimpanzee Tracking">
-                            Chimpanzee Tracking
-                        </option>
-                        <option value="Cultural Tour">
-                            Cultural Tour
-                        </option>
-                        <option value="Boat Cruise">
-                            Boat Cruise
-                        </option>
-                        <option value="Nature Walk">
-                            Nature Walk
-                        </option>
-                        <option value="Mountain Climbing">
-                            Mountain Climbing
-                        </option>
-                    </select>
-
-                </div>
-
-            </div>
-
-
-            <!-- STAR RATING -->
-
-            <div class="form-group">
-
-                <label>
-                    Your Rating
-                </label>
-
-                <div
-                    class="stars"
-                    id="stars"
-                >
-
-                    <span data-rating="1">★</span>
-                    <span data-rating="2">★</span>
-                    <span data-rating="3">★</span>
-                    <span data-rating="4">★</span>
-                    <span data-rating="5">★</span>
-
-                </div>
-
-                <input
-                    type="hidden"
-                    id="rating"
-                    name="rating"
-                >
-
-                <p
-                    id="ratingText"
-                    class="rating-text"
-                >
-                    Select your rating
-                </p>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="reviewMessage">
-                    Your Experience
-                </label>
-
-                <textarea
-                    id="reviewMessage"
-                    name="reviewMessage"
-                    rows="6"
-                    placeholder="Tell us about your trip..."
-                    required
-                ></textarea>
-
-            </div>
-
-
-            <button
-                type="submit"
-                class="submit-review-btn"
-            >
-                Submit Review
-            </button>
-
-
-            <div
-                id="message"
-                class="form-message"
-            ></div>
-
-        </form>
-
-    </div>
+    </form>
 
 </div>
+```
 
+</div>
 
 <!-- ==================================================
      FOOTER
@@ -558,78 +683,94 @@
 
 <footer class="footer">
 
-    <div class="footer-container">
-
-        <div class="footer-brand">
-
-            <h3>
-                🌿 QUEEN TRAILS SAFARIS
-            </h3>
-
-            <p>
-                Discover Uganda. Experience the wild.
-                Create unforgettable memories.
-            </p>
-
-        </div>
+```
+<div class="footer-container">
 
 
-        <div class="footer-links">
+    <div class="footer-brand">
 
-            <h4>Quick Links</h4>
-
-            <a href="home.html">Home</a>
-
-            <a href="aboutus.html">About Us</a>
-
-           
-
-            <a href="reviews.html">
-                Reviews
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-        </div>
-
-
-        <div class="footer-links">
-
-            <h4>Explore</h4>
-
-            <a href="tours.html">
-                Safari Packages
-            </a>
-
-            <a href="contact.html">
-                Book a Safari
-            </a>
-
-            <a href="reviews.html">
-                Guest Experiences
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
+        <h3>
+            🌿 QUEEN TRAILS SAFARIS
+        </h3>
 
         <p>
-            © 2026 Queen Trails Safaris.
-            All rights reserved.
+            Discover Uganda. Experience the wild.
+            Create unforgettable memories.
         </p>
 
     </div>
 
+
+    <div class="footer-links">
+
+        <h4>
+            Quick Links
+        </h4>
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/about">
+            About Us
+        </a>
+
+        <a href="/reviews">
+            Reviews
+        </a>
+
+        <a href="/contact">
+            Contact
+        </a>
+
+    </div>
+
+
+    <div class="footer-links">
+
+        <h4>
+            Explore
+        </h4>
+
+        <a href="/tours">
+            Safari Packages
+        </a>
+
+        <a href="/booking">
+            Book a Safari
+        </a>
+
+        <a href="/reviews">
+            Guest Experiences
+        </a>
+
+    </div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+    <p>
+        © 2026 Queen Trails Safaris.
+        All rights reserved.
+    </p>
+
+</div>
+```
+
 </footer>
 
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
 
-<script src="reviews.js"></script>
-```
+<!-- IMPORTANT:
+     Your actual file is Reviews.js with a capital R.
+     Use the exact filename here.
+-->
+
+<script src="/Reviews.js"></script>
 
 </body>
 

@@ -101,6 +101,11 @@ app.get("/about", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "about.html"));
 });
 
+// ABOUT US PAGE (actual file name in public folder)
+app.get("/aboutus", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "aboutus.html"));
+});
+
 // TOURS
 app.get("/tours", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "tours.html"));
@@ -118,7 +123,11 @@ app.get("/contact", (req, res) => {
 
 // REVIEWS
 app.get("/reviews", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "reviews.html"));
+  res.sendFile(path.join(__dirname, "public", "Reviews.html"));
+});
+
+app.get("/Reviews", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "Reviews.html"));
 });
 
 // ==================================================
@@ -133,6 +142,11 @@ app.get("/home.html", (req, res) => {
 // about.html -> /about
 app.get("/about.html", (req, res) => {
   res.redirect(301, "/about");
+});
+
+// aboutus.html -> /aboutus
+app.get("/aboutus.html", (req, res) => {
+  res.redirect(301, "/aboutus");
 });
 
 // tours.html -> /tours
@@ -152,6 +166,11 @@ app.get("/contact.html", (req, res) => {
 
 // reviews.html -> /reviews
 app.get("/reviews.html", (req, res) => {
+  res.redirect(301, "/reviews");
+});
+
+// Reviews.html -> /reviews
+app.get("/Reviews.html", (req, res) => {
   res.redirect(301, "/reviews");
 });
 

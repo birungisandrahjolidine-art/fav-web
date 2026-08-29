@@ -1,387 +1,793 @@
-
 <!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Contact Us | Queen Trails Safaris</title>
+```
+<title>Contact Us | Queen Trails Safaris</title>
 
-    <!-- Google Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+<!-- Google Font -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
 
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
+<!-- Font Awesome -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+/>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="contact.css" />
+<!-- Contact CSS -->
+<link rel="stylesheet" href="contact.css" />
+```
+
   </head>
 
   <body>
-    <!-- ================= NAVBAR ================= -->
-    <header>
-      <div class="logo">
-        <img src="images/logo.png" alt="Queen Trails Safaris Logo" />
 
-        <div>
-          <h2>QUEEN TRAILS SAFARIS</h2>
-        </div>
-      </div>
+```
+<!-- ==================================================
+     NAVBAR
+================================================== -->
 
-      <nav>
-        <ul>
-          <li><a href="home">Home</a></li>
+<header>
+  <div class="logo">
 
-          <li><a href="aboutus">About Us</a></li>
+    <a href="home">
+      <img
+        src="images/logo.png"
+        alt="Queen Trails Safaris Logo"
+      />
+    </a>
 
-          <li><a href="tours">Tours</a></li>
+    <div>
+      <h2>QUEEN TRAILS SAFARIS</h2>
+    </div>
 
-          <!-- SERVICES -->
-          <li class="dropdown">
-            <a href="#" aria-haspopup="true">
-              Services
-              <span class="nav-caret">▾</span>
+  </div>
+
+  <nav>
+    <ul>
+
+      <!-- HOME -->
+      <li>
+        <a href="home">
+          Home
+        </a>
+      </li>
+
+      <!-- ABOUT -->
+      <li>
+        <a href="aboutus">
+          About Us
+        </a>
+      </li>
+
+      <!-- TOURS -->
+      <li>
+        <a href="tours">
+          Tours
+        </a>
+      </li>
+
+      <!-- SERVICES -->
+      <li class="dropdown">
+
+        <a href="services">
+          Services
+          <span class="nav-caret">▾</span>
+        </a>
+
+        <ul class="dropdown-content">
+
+          <li>
+            <a href="services#game-drives">
+              Game Drives
             </a>
-
-            <ul class="dropdown-content">
-              <li><a href="#">Game Drives</a></li>
-              <li><a href="#">Luxury Boat Cruises</a></li>
-              <li><a href="#">Bird Watching</a></li>
-              <li><a href="#">Nature Walks</a></li>
-              <li><a href="#">Chimpanzee Tracking</a></li>
-              <li><a href="#">Cultural Tours</a></li>
-              <li><a href="#">Accommodation Booking</a></li>
-              <li><a href="#">Sport Fishing Services</a></li>
-              <li><a href="#">Car and Motorcycle Rentals</a></li>
-            </ul>
-          </li>
-
-          <!-- DESTINATIONS -->
-          <li class="dropdown">
-            <a href="#" aria-haspopup="true">
-              Destinations
-              <span class="nav-caret">▾</span>
-            </a>
-
-            <ul class="dropdown-content">
-              <li><a href="#">Queen Elizabeth National Park</a></li>
-              <li><a href="#">Kibale Forest</a></li>
-              <li><a href="#">Bwindi Impenetrable Forest</a></li>
-              <li><a href="#">Murchison Falls</a></li>
-              <li><a href="#">Lake Mburo</a></li>
-              <li><a href="#">Mgahinga Gorilla Park</a></li>
-            </ul>
           </li>
 
           <li>
-            <a href="contact" class="active">Contact Us</a>
+            <a href="services#boat-cruises">
+              Luxury Boat Cruises
+            </a>
           </li>
 
-          <li><a href="Reviews">Reviews</a></li>
+          <li>
+            <a href="services#bird-watching">
+              Bird Watching
+            </a>
+          </li>
+
+          <li>
+            <a href="services#nature-walks">
+              Nature Walks
+            </a>
+          </li>
+
+          <li>
+            <a href="services#chimpanzee">
+              Chimpanzee Tracking
+            </a>
+          </li>
+
+          <li>
+            <a href="services#cultural">
+              Cultural Tours
+            </a>
+          </li>
+
+          <li>
+            <a href="services#accommodation">
+              Accommodation Booking
+            </a>
+          </li>
+
+          <li>
+            <a href="services#fishing">
+              Sport Fishing Services
+            </a>
+          </li>
+
+          <li>
+            <a href="services#rentals">
+              Car and Motorcycle Rentals
+            </a>
+          </li>
+
         </ul>
-      </nav>
-    </header>
 
-    <!-- ================= HERO ================= -->
-    <section class="hero">
-      <div class="overlay">
-        <h1>Contact Us</h1>
+      </li>
 
-        <div class="line"></div>
+      <!-- DESTINATIONS -->
+      <li class="dropdown">
 
-        <p>
-          Ready to explore Uganda?
-          <br />
-          Contact us to plan your next unforgettable adventure.
-        </p>
-      </div>
-    </section>
+        <a href="destinations">
+          Destinations
+          <span class="nav-caret">▾</span>
+        </a>
 
-    <!-- ================= CONTACT & BOOKING ================= -->
-    <section class="contact-section">
-      <div class="contact-wrapper">
-        <!-- ================= CONTACT INFORMATION ================= -->
-        <div class="contact-card">
-          <h2>Get In Touch</h2>
+        <ul class="dropdown-content">
 
-          <div class="gold-line"></div>
+          <li>
+            <a href="destinations#queen-elizabeth">
+              Queen Elizabeth National Park
+            </a>
+          </li>
 
-          <p class="intro">
-            Have a question or ready to start your adventure? Our team is here
-            to help you plan an unforgettable experience in Uganda.
-          </p>
+          <li>
+            <a href="destinations#kibale">
+              Kibale Forest
+            </a>
+          </li>
 
-          <!-- ADDRESS -->
-          <div class="item">
-            <i class="fas fa-map-marker-alt"></i>
+          <li>
+            <a href="destinations#bwindi">
+              Bwindi Impenetrable Forest
+            </a>
+          </li>
 
-            <div>
-              <h3>Address</h3>
+          <li>
+            <a href="destinations#murchison">
+              Murchison Falls
+            </a>
+          </li>
 
-              <p>Katunguru, Queen Elizabeth National Park, Western Uganda</p>
-            </div>
-          </div>
+          <li>
+            <a href="destinations#lake-mburo">
+              Lake Mburo
+            </a>
+          </li>
 
-          <!-- PHONE -->
-          <div class="item">
-            <i class="fas fa-phone"></i>
+          <li>
+            <a href="destinations#mgahinga">
+              Mgahinga Gorilla Park
+            </a>
+          </li>
 
-            <div>
-              <h3>Phone</h3>
+        </ul>
 
-              <p>
-                +256 77420307
-                <br />
-                +256 756491538
-              </p>
-            </div>
-          </div>
+      </li>
 
-          <!-- EMAIL -->
-          <div class="item">
-            <i class="fas fa-envelope"></i>
+      <!-- CONTACT -->
+      <li>
+        <a
+          href="contact"
+          class="active"
+        >
+          Contact Us
+        </a>
+      </li>
 
-            <div>
-              <h3>Email</h3>
+      <!-- REVIEWS -->
+      <li>
+        <a href="Reviews">
+          Reviews
+        </a>
+      </li>
 
-              <p>danieloscarkatoot@gmail.com</p>
-              <p>queentrailssafaris@gmail.com</p>
-            </div>
-          </div>
+    </ul>
+  </nav>
+</header>
 
-          <!-- HOURS -->
-          <div class="item">
-            <i class="fas fa-clock"></i>
 
-            <div>
-              <h3>Opening Hours</h3>
+<!-- ==================================================
+     HERO
+================================================== -->
 
-              <p>
-                Monday - Sunday
-                <br />
-                8:00 AM - 6:00 PM
-              </p>
-            </div>
-          </div>
-        </div>
+<section class="hero">
 
-        <!-- ================= BOOKING FORM ================= -->
-        <div class="booking-card">
-          <h2>Book Your Adventure</h2>
+  <div class="overlay">
 
-          <div class="gold-line"></div>
+    <span class="hero-label">
+      QUEEN TRAILS SAFARIS
+    </span>
 
-          <p class="booking-intro">
-            Fill in the form below and our team will get back to you with more
-            information about your trip.
-          </p>
+    <h1>
+      Contact Us
+    </h1>
 
-          <form id="bookingForm">
-            <!-- FULL NAME -->
-            <div class="form-group">
-              <label for="fullname"> Full Name </label>
+    <div class="line"></div>
 
-              <input
-                type="text"
-                id="fullname"
-                name="fullname"
-                placeholder="Enter your full name"
-                required
-              />
-            </div>
+    <p>
+      Ready to explore Uganda?
+      <br />
+      Contact us to plan your next unforgettable adventure.
+    </p>
 
-            <!-- EMAIL -->
-            <div class="form-group">
-              <label for="email"> Email Address </label>
+  </div>
 
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-                required
-              />
-            </div>
+</section>
 
-            
-            <!-- PHONE -->
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
 
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="Enter your phone number"
-                pattern="^\+?[0-9\s().-]{7,20}$"
-                title="Please enter a valid phone number"
-                required
-              />
-            </div>
+<!-- ==================================================
+     CONTACT & BOOKING
+================================================== -->
 
-            <!-- DESTINATION -->
-            <div class="form-group">
-              <label for="destination"> Destination </label>
+<section class="contact-section">
 
-              <select id="destination" name="destination" required>
-                <option value="">Select Destination</option>
+  <div class="contact-wrapper">
 
-                <option value="Queen Elizabeth National Park">
-                  Queen Elizabeth National Park
-                </option>
+    <!-- ==================================================
+         CONTACT INFORMATION
+    ================================================== -->
 
-                <option value="Kibale Forest">Kibale Forest</option>
+    <div class="contact-card">
 
-                <option value="Bwindi Impenetrable Forest">
-                  Bwindi Impenetrable Forest
-                </option>
+      <h2>
+        Get In Touch
+      </h2>
 
-                <option value="Murchison Falls">Murchison Falls</option>
+      <div class="gold-line"></div>
 
-                <option value="Lake Mburo">Lake Mburo</option>
+      <p class="intro">
+        Have a question or ready to start your adventure?
+        Our team is here to help you plan an unforgettable
+        experience in Uganda.
+      </p>
 
-                <option value="Mgahinga Gorilla Park">
-                  Mgahinga Gorilla Park
-                </option>
-              </select>
-            </div>
 
-            <!-- TOUR PACKAGE -->
-            <div class="form-group">
-              <label for="package"> Tour Package </label>
+      <!-- ADDRESS -->
 
-              <select id="package" name="package" required>
-                <option value="">Select Tour Package</option>
+      <div class="item">
 
-                <option value="Wildlife Safari">Wildlife Safari</option>
+        <i class="fas fa-map-marker-alt"></i>
 
-                <option value="Gorilla Trekking">Gorilla Trekking</option>
+        <div>
 
-                <option value="Chimpanzee Tracking">Chimpanzee Tracking</option>
-
-                <option value="Cultural Tour">Cultural Tour</option>
-
-                <option value="Boat Cruise">Boat Cruise</option>
-
-                <option value="Nature Walk">Nature Walk</option>
-
-                <option value="Custom Tour">Custom Tour</option>
-              </select>
-            </div>
-
-            <!-- TOUR DURATION -->
-            <div class="form-group">
-              <label for="duration"> Tour Duration </label>
-
-              <select id="duration" name="duration" required>
-                <option value="">Select Tour Duration</option>
-
-                <option value="1 Day">1 Day</option>
-
-                <option value="2 Days / 1 Night">2 Days / 1 Night</option>
-
-                <option value="3 Days / 2 Nights">3 Days / 2 Nights</option>
-
-                <option value="5 Days / 4 Nights">5 Days / 4 Nights</option>
-
-                <option value="7 Days / 6 Nights">7 Days / 6 Nights</option>
-
-                <option value="2 Weeks / 13 Nights">2 Weeks / 13 Nights</option>
-
-                <option value="Custom Duration">Custom Duration</option>
-              </select>
-            </div>
-
-            <!-- DATE AND TRAVELERS -->
-            <div class="form-row">
-              <div class="form-group">
-                <label for="travel-date"> Travel Date </label>
-
-                <input
-                  type="date"
-                  id="travel-date"
-                  name="travel-date"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="travelers"> Travelers </label>
-
-                <input
-                  type="number"
-                  id="travelers"
-                  name="travelers"
-                  min="1"
-                  value="1"
-                  required
-                />
-              </div>
-            </div>
-
-            <!-- MESSAGE -->
-            <div class="form-group">
-              <label for="message"> Special Requests / Message </label>
-
-              <textarea
-                id="message"
-                name="message"
-                rows="5"
-                placeholder="Tell us about your trip or any special requests..."
-              ></textarea>
-            </div>
-
-            <!-- BUTTON -->
-            <button type="submit" class="booking-btn">
-              Send Booking Request
-              <i class="fas fa-paper-plane"></i>
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= FOOTER ================= -->
-    <footer class="footer">
-      <div class="footer-container">
-        <div class="footer-brand">
-          <h3>QUEEN TRAILS SAFARIS</h3>
+          <h3>
+            Address
+          </h3>
 
           <p>
-            Discover Uganda. Experience the wild. Create unforgettable memories.
+            Katunguru, Queen Elizabeth National Park,
+            Western Uganda
           </p>
+
         </div>
 
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-
-          <a href="home.html">Home</a>
-          <a href="aboutus.html">About Us</a>
-          <a href="Reviews.html">Reviews</a>
-          <a href="contact.html">Contact</a>
-        </div>
-
-        <div class="footer-links">
-          <h4>Explore</h4>
-
-          <a href="tours.html">Safari Packages</a>
-          <a href="contact.html">Book a Safari</a>
-          <a href="Reviews.html">Guest Experiences</a>
-        </div>
       </div>
 
-      <div class="footer-bottom">
-        <p>© 2026 Queen Trails Safaris. All rights reserved.</p>
-      </div>
-    </footer>
 
-    <script src="contact.js?v=2"></script>
+      <!-- PHONE -->
+
+      <div class="item">
+
+        <i class="fas fa-phone"></i>
+
+        <div>
+
+          <h3>
+            Phone
+          </h3>
+
+          <p>
+            +256 77420307
+            <br />
+            +256 756491538
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- EMAIL -->
+
+      <div class="item">
+
+        <i class="fas fa-envelope"></i>
+
+        <div>
+
+          <h3>
+            Email
+          </h3>
+
+          <p>
+            danieloscarkatoot@gmail.com
+          </p>
+
+          <p>
+            queentrailssafaris@gmail.com
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- OPENING HOURS -->
+
+      <div class="item">
+
+        <i class="fas fa-clock"></i>
+
+        <div>
+
+          <h3>
+            Opening Hours
+          </h3>
+
+          <p>
+            Monday - Sunday
+            <br />
+            8:00 AM - 6:00 PM
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         BOOKING FORM
+    ================================================== -->
+
+    <div class="booking-card">
+
+      <h2>
+        Book Your Adventure
+      </h2>
+
+      <div class="gold-line"></div>
+
+      <p class="booking-intro">
+        Fill in the form below and our team will get back
+        to you with more information about your trip.
+      </p>
+
+
+      <form
+        id="bookingForm"
+        action="/api/bookings"
+        method="POST"
+      >
+
+        <!-- FULL NAME -->
+
+        <div class="form-group">
+
+          <label for="fullname">
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            placeholder="Enter your full name"
+            autocomplete="name"
+            required
+          />
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+          <label for="email">
+            Email Address
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            autocomplete="email"
+            required
+          />
+
+        </div>
+
+
+        <!-- PHONE -->
+
+        <div class="form-group">
+
+          <label for="phone">
+            Phone Number
+          </label>
+
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Enter your phone number"
+            autocomplete="tel"
+            pattern="^\+?[0-9\s().-]{7,20}$"
+            title="Please enter a valid phone number"
+            required
+          />
+
+        </div>
+
+
+        <!-- DESTINATION -->
+
+        <div class="form-group">
+
+          <label for="destination">
+            Destination
+          </label>
+
+          <select
+            id="destination"
+            name="destination"
+            required
+          >
+
+            <option value="">
+              Select Destination
+            </option>
+
+            <option value="Queen Elizabeth National Park">
+              Queen Elizabeth National Park
+            </option>
+
+            <option value="Kibale Forest">
+              Kibale Forest
+            </option>
+
+            <option value="Bwindi Impenetrable Forest">
+              Bwindi Impenetrable Forest
+            </option>
+
+            <option value="Murchison Falls">
+              Murchison Falls
+            </option>
+
+            <option value="Lake Mburo">
+              Lake Mburo
+            </option>
+
+            <option value="Mgahinga Gorilla Park">
+              Mgahinga Gorilla Park
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- TOUR PACKAGE -->
+
+        <div class="form-group">
+
+          <label for="package">
+            Tour Package
+          </label>
+
+          <select
+            id="package"
+            name="package"
+            required
+          >
+
+            <option value="">
+              Select Tour Package
+            </option>
+
+            <option value="Wildlife Safari">
+              Wildlife Safari
+            </option>
+
+            <option value="Gorilla Trekking">
+              Gorilla Trekking
+            </option>
+
+            <option value="Chimpanzee Tracking">
+              Chimpanzee Tracking
+            </option>
+
+            <option value="Cultural Tour">
+              Cultural Tour
+            </option>
+
+            <option value="Boat Cruise">
+              Boat Cruise
+            </option>
+
+            <option value="Nature Walk">
+              Nature Walk
+            </option>
+
+            <option value="Custom Tour">
+              Custom Tour
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- TOUR DURATION -->
+
+        <div class="form-group">
+
+          <label for="duration">
+            Tour Duration
+          </label>
+
+          <select
+            id="duration"
+            name="duration"
+            required
+          >
+
+            <option value="">
+              Select Tour Duration
+            </option>
+
+            <option value="1 Day">
+              1 Day
+            </option>
+
+            <option value="2 Days / 1 Night">
+              2 Days / 1 Night
+            </option>
+
+            <option value="3 Days / 2 Nights">
+              3 Days / 2 Nights
+            </option>
+
+            <option value="5 Days / 4 Nights">
+              5 Days / 4 Nights
+            </option>
+
+            <option value="7 Days / 6 Nights">
+              7 Days / 6 Nights
+            </option>
+
+            <option value="2 Weeks / 13 Nights">
+              2 Weeks / 13 Nights
+            </option>
+
+            <option value="Custom Duration">
+              Custom Duration
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- TRAVEL DATE & TRAVELERS -->
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label for="travel-date">
+              Travel Date
+            </label>
+
+            <input
+              type="date"
+              id="travel-date"
+              name="travel-date"
+              required
+            />
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="travelers">
+              Travelers
+            </label>
+
+            <input
+              type="number"
+              id="travelers"
+              name="travelers"
+              min="1"
+              value="1"
+              required
+            />
+
+          </div>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div class="form-group">
+
+          <label for="message">
+            Special Requests / Message
+          </label>
+
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Tell us about your trip or any special requests..."
+          ></textarea>
+
+        </div>
+
+
+        <!-- BUTTON -->
+
+        <button
+          type="submit"
+          class="booking-btn"
+        >
+
+          Send Booking Request
+
+          <i class="fas fa-paper-plane"></i>
+
+        </button>
+
+
+        <!-- FORM MESSAGE -->
+
+        <div
+          id="formMessage"
+          class="form-message"
+          role="alert"
+        ></div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- BRAND -->
+
+    <div class="footer-brand">
+
+      <h3>
+        QUEEN TRAILS SAFARIS
+      </h3>
+
+      <p>
+        Discover Uganda. Experience the wild.
+        Create unforgettable memories.
+      </p>
+
+    </div>
+
+
+    <!-- QUICK LINKS -->
+
+    <div class="footer-links">
+
+      <h4>
+        Quick Links
+      </h4>
+
+      <a href="home">
+        Home
+      </a>
+
+      <a href="aboutus">
+        About Us
+      </a>
+
+      <a href="tours">
+        Tours
+      </a>
+
+      <a href="Reviews">
+        Reviews
+      </a>
+
+      <a href="contact">
+        Contact
+      </a>
+
+    </div>
+
+
+    <!-- EXPLORE -->
+
+    <div class="footer-links">
+
+      <h4>
+        Explore
+      </h4>
+
+      <a href="destinations">
+        Destinations
+      </a>
+
+      <a href="tours">
+        Safari Packages
+      </a>
+
+      <a href="contact">
+        Book a Safari
+      </a>
+
+      <a href="Reviews">
+        Guest Experiences
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <p>
+      © 2026 Queen Trails Safaris.
+      All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+
+<!-- CONTACT JAVASCRIPT -->
+
+<script src="contact.js?v=2"></script>
+```
+
   </body>
 </html>
-```
