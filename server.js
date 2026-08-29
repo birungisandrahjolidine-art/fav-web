@@ -4,6 +4,7 @@ const dns = require("dns");
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const express = require("express");
+const fs = require("fs");
 const path = require("path");
 const mongoose = require("mongoose");
 const session = require("express-session");
@@ -91,85 +92,111 @@ app.use(
 // CLEAN PAGE URLS
 // ==================================================
 
+function resolvePublicFile(fileName) {
+  const publicDir = path.join(__dirname, "public");
+  const requested = String(fileName || "")
+    .trim()
+    .replace(/^\/+|\/+$/g, "")
+    .toLowerCase();
+
+  if (!requested) {
+    return null;
+  }
+
+  const normalized = requested.replace(/\.html?$/i, "");
+
+  try {
+    const files = fs.readdirSync(publicDir);
+    const match = files.find((file) => {
+      const lowerName = file.toLowerCase();
+      return (
+        lowerName === `${normalized}.html` ||
+        lowerName === `${normalized}.htm` ||
+        lowerName === normalized
+      );
+    });
+
+    return match ? path.join(publicDir, match) : null;
+  } catch (error) {
+    console.error("Failed to resolve public file:", error);
+    return null;
+  }
+}
+
+function sendResolvedPage(res, requestedName, fallbackName = null) {
+  const fileMatch =
+    resolvePublicFile(requestedName) ||
+    (fallbackName ? resolvePublicFile(fallbackName) : null);
+
+  if (fileMatch) {
+    return res.sendFile(fileMatch);
+  }
+
+  return res.redirect("/");
+}
+
 // HOME
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "home.html"));
+app.get(["/", "/home", "/home.html"], (req, res) => {
+  sendResolvedPage(res, "home");
 });
 
 // ABOUT
-app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "about.html"));
-});
-
-// ABOUT US PAGE (actual file name in public folder)
-app.get("/aboutus", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "aboutus.html"));
+app.get(["/about", "/about.html", "/aboutus", "/aboutus.html", "/AboutUs", "/AboutUs.html"], (req, res) => {
+  sendResolvedPage(res, "about", "aboutus");
 });
 
 // TOURS
-app.get("/tours", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "tours.html"));
+app.get(["/tours", "/tours.html"], (req, res) => {
+  sendResolvedPage(res, "tours");
 });
 
 // BOOKING
-app.get("/booking", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "booking.html"));
+app.get(["/booking", "/booking.html"], (req, res) => {
+  sendResolvedPage(res, "contact", "booking");
 });
 
 // CONTACT
-app.get("/contact", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "contact.html"));
+app.get(["/contact", "/contact.html"], (req, res) => {
+  sendResolvedPage(res, "contact");
 });
 
 // REVIEWS
-app.get("/reviews", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "Reviews.html"));
-});
-
-app.get("/Reviews", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "Reviews.html"));
+app.get(["/reviews", "/reviews.html", "/Reviews", "/Reviews.html"], (req, res) => {
+  sendResolvedPage(res, "reviews", "Reviews");
 });
 
 // ==================================================
 // REDIRECT OLD .HTML URLS TO CLEAN URLS
 // ==================================================
 
-// home.html -> /
 app.get("/home.html", (req, res) => {
   res.redirect(301, "/");
 });
 
-// about.html -> /about
 app.get("/about.html", (req, res) => {
   res.redirect(301, "/about");
 });
 
-// aboutus.html -> /aboutus
 app.get("/aboutus.html", (req, res) => {
   res.redirect(301, "/aboutus");
 });
 
-// tours.html -> /tours
 app.get("/tours.html", (req, res) => {
   res.redirect(301, "/tours");
 });
 
-// booking.html -> /booking
 app.get("/booking.html", (req, res) => {
-  res.redirect(301, "/booking");
+  res.redirect(301, "/contact");
 });
 
-// contact.html -> /contact
 app.get("/contact.html", (req, res) => {
   res.redirect(301, "/contact");
 });
 
-// reviews.html -> /reviews
 app.get("/reviews.html", (req, res) => {
   res.redirect(301, "/reviews");
 });
 
-// Reviews.html -> /reviews
 app.get("/Reviews.html", (req, res) => {
   res.redirect(301, "/reviews");
 });
