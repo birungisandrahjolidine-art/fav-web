@@ -4,7 +4,6 @@ const dns = require("dns");
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const express = require("express");
-const fs = require("fs");
 const path = require("path");
 const mongoose = require("mongoose");
 const session = require("express-session");
@@ -92,112 +91,67 @@ app.use(
 // CLEAN PAGE URLS
 // ==================================================
 
-function resolvePublicFile(fileName) {
-  const publicDir = path.join(__dirname, "public");
-  const requested = String(fileName || "")
-    .trim()
-    .replace(/^\/+|\/+$/g, "")
-    .toLowerCase();
-
-  if (!requested) {
-    return null;
-  }
-
-  const normalized = requested.replace(/\.html?$/i, "");
-
-  try {
-    const files = fs.readdirSync(publicDir);
-    const match = files.find((file) => {
-      const lowerName = file.toLowerCase();
-      return (
-        lowerName === `${normalized}.html` ||
-        lowerName === `${normalized}.htm` ||
-        lowerName === normalized
-      );
-    });
-
-    return match ? path.join(publicDir, match) : null;
-  } catch (error) {
-    console.error("Failed to resolve public file:", error);
-    return null;
-  }
-}
-
-function sendResolvedPage(res, requestedName, fallbackName = null) {
-  const fileMatch =
-    resolvePublicFile(requestedName) ||
-    (fallbackName ? resolvePublicFile(fallbackName) : null);
-
-  if (fileMatch) {
-    return res.sendFile(fileMatch);
-  }
-
-  return res.redirect("/");
-}
-
 // HOME
-app.get(["/", "/home", "/home.html"], (req, res) => {
-  sendResolvedPage(res, "home");
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "home.html"));
 });
 
 // ABOUT
-app.get(["/about", "/about.html", "/aboutus", "/aboutus.html", "/AboutUs", "/AboutUs.html"], (req, res) => {
-  sendResolvedPage(res, "about", "aboutus");
+app.get("/about", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "about.html"));
 });
 
 // TOURS
-app.get(["/tours", "/tours.html"], (req, res) => {
-  sendResolvedPage(res, "tours");
+app.get("/tours", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "tours.html"));
 });
 
 // BOOKING
-app.get(["/booking", "/booking.html"], (req, res) => {
-  sendResolvedPage(res, "contact", "booking");
+app.get("/booking", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "booking.html"));
 });
 
 // CONTACT
-app.get(["/contact", "/contact.html"], (req, res) => {
-  sendResolvedPage(res, "contact");
+app.get("/contact", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "contact.html"));
 });
 
 // REVIEWS
-app.get(["/reviews", "/reviews.html", "/Reviews", "/Reviews.html"], (req, res) => {
-  sendResolvedPage(res, "reviews", "Reviews");
+app.get("/reviews", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "Reviews.html"));
 });
 
 // ==================================================
 // REDIRECT OLD .HTML URLS TO CLEAN URLS
 // ==================================================
 
+// home.html -> /
 app.get("/home.html", (req, res) => {
   res.redirect(301, "/");
 });
 
+// about.html -> /about
 app.get("/about.html", (req, res) => {
   res.redirect(301, "/about");
 });
 
-app.get("/aboutus.html", (req, res) => {
-  res.redirect(301, "/aboutus");
-});
-
+// tours.html -> /tours
 app.get("/tours.html", (req, res) => {
   res.redirect(301, "/tours");
 });
 
+// booking.html -> /booking
 app.get("/booking.html", (req, res) => {
-  res.redirect(301, "/contact");
+  res.redirect(301, "/booking");
 });
 
+// contact.html -> /contact
 app.get("/contact.html", (req, res) => {
   res.redirect(301, "/contact");
 });
 
+// reviews.html -> /reviews
 app.get("/reviews.html", (req, res) => {
-  res.redirect(301, "/reviews");
-});
-
-app.get("/Reviews.html", (req, res) => {
   res.redirect(301, "/reviews");
 });
 
